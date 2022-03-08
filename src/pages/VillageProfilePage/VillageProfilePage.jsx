@@ -7,6 +7,8 @@ import ResultsHouses from "../../components/ResultsHouses/ResultsHouses"
 import VillageFeaturesForm from "../../components/VillageFeaturesForm/VillageFeaturesForm"
 import ImageForm from "../../components/ImageForm/ImageForm"
 import './VillageProfilePage.css'
+import { Link } from 'react-router-dom'
+import UserSignupPage from "../UserSignupPage/UserSignupPage"
 
 
 const VillageProfilePage = () => {
@@ -72,14 +74,20 @@ const VillageProfilePage = () => {
 
                 {isLoaded && <VillageFeatures {...villageDetails} />}
 
-                <h2>Aquí deberían ir tus casas favoritas</h2>
+                <h2>Casas de {user.name}</h2>
                 <Row>
                     {housesLoaded && < ResultsHouses houses={houses} width={3} />}
                 </Row>
 
+                <Link to={`/pueblos/${villageDetails?._id}/casas`}>
+                    <Button>VER TODAS LAS CASAS</Button>
+                </Link>
+
                 <Row>
                     <Button onClick={handleEditBtn}>Editar perfil</Button>
                 </Row>
+
+
 
                 <Modal show={showModal} onHide={handleSaveBtn} size="lg">
                     <Modal.Header closeButton>
