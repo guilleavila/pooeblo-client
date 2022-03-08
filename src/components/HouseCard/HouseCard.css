@@ -1,0 +1,8 @@
+.houseCardImg{
+    height: 400px;
+    object-fit: cover;
+}
+
+.houseCard{
+    margin: 30px 20px;
+}
