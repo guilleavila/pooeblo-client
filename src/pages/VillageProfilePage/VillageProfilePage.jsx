@@ -95,7 +95,7 @@ const VillageProfilePage = () => {
                         <Modal.Title>Subir imagen</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        {isLoaded && <ImageForm />}
+                        {isLoaded && <ImageForm closeModal={handleSaveImageBtn} refreshDetails={getVillageDetails} />}
                     </Modal.Body>
                 </Modal>
 

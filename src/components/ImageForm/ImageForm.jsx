@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import uploadService from '../../services/upload.service'
+import uploadOneService from '../../services/uploadOne.service'
 import villagesService from '../../services/villages.service'
 
-const ImageForm = () => {
+const ImageForm = ({ closeModal, refreshDetails }) => {
 
     const [loadingImage, setLoadingImage] = useState(false)
 
@@ -12,21 +13,19 @@ const ImageForm = () => {
         images: []
     })
 
-    const uploadHouseImages = e => {
+    const uploadVillageImage = e => {
 
         setLoadingImage(true)
 
-        const formData = new FormData();
-        for (let i = 0; i < e.target.files.length; i++) {
-            formData.append('photos', e.target.files[i]);
-        }
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
 
-        uploadService
-            .uploadImage(formData)
+        uploadOneService
+            .uploadOneImage(formData)
             .then(({ data }) => {
                 setLoadingImage(false)
                 // console.log(data.cloudinary_urls)
-                setImageForm({ ...imageForm, images: data.cloudinary_urls })
+                setImageForm({ ...imageForm, profileImg: data.cloudinary_url })
             })
             .catch(err => console.log(err))
     }
@@ -35,8 +34,10 @@ const ImageForm = () => {
         e.preventDefault()
 
         villagesService
-            .editVillageInfo(imageForm)
+            .editVillageImage(imageForm)
             .then(() => {
+                closeModal()
+                refreshDetails()
 
             })
             .catch(err => console.log(err))
@@ -47,7 +48,7 @@ const ImageForm = () => {
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
                 <Form.Label>Imágenes</Form.Label>
-                <Form.Control type="file" onChange={uploadHouseImages} />
+                <Form.Control type="file" onChange={uploadVillageImage} />
                 <Form.Text className="text-muted">
                     Máx. una imagen
                 </Form.Text>

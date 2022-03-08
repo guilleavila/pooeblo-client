@@ -1,20 +1,24 @@
 import { useEffect } from "react"
 import { useState } from "react"
-import { Container, Row, Col, Button } from "react-bootstrap"
+import { Container, Row, Col, Button, Modal } from "react-bootstrap"
 import housesService from "../../services/houses.service"
+import HouseImagesForm from "../ImageForm/ImageForm"
 import './HouseImages.css'
 
 
-const HouseImages = ({ _id, isMine, updataeImagesState, houseImages }) => {
+const HouseImages = ({ _id, isMine, updataeImagesState, houseImages, getHouseDetails }) => {
 
 
     // const [houseImages, setHouseImages] = useState([])
     const [showBtn, setShowBtn] = useState('hidden')
+    const [btnText, setBtnText] = useState('Editar imágenes')
+
+    const [showModal, setShowModal] = useState(false)
 
     // EDIT IMAGES BTN
     const handleEditBtn = () => {
-        if (showBtn === 'hidden') setShowBtn('shown')
-        else setShowBtn('hidden')
+        btnText === 'Editar imágenes' ? setBtnText('Guardar') : setBtnText('Editar imágenes')
+        showBtn === 'hidden' ? setShowBtn('shown') : setShowBtn('hidden')
     }
 
     const handleDeleteBtn = (imgUrl) => {
@@ -33,9 +37,14 @@ const HouseImages = ({ _id, isMine, updataeImagesState, houseImages }) => {
             .deleteOneImage(_id, newImages)
             .then(({ data }) => updataeImagesState(data.images))
             .catch(err => console.log(err))
-
     }
 
+    // const handleUploadImgBtn = () => setShowModal(true)
+    const handleSaveImageBtn = () => setShowModal(false)
+
+    const handleUploadImageBtn = () => {
+        setShowModal(true)
+    }
 
     return (
 
@@ -160,7 +169,18 @@ const HouseImages = ({ _id, isMine, updataeImagesState, houseImages }) => {
                     </Col>
                 </Row>
             }
-            {isMine && <Button onClick={handleEditBtn}>Editar imágenes</Button>}
+            <Button className={showBtn} onClick={handleUploadImageBtn}>Añadir imagen</Button>
+            {isMine && <Button onClick={handleEditBtn}>{btnText}</Button>}
+
+            <Modal show={showModal} onHide={handleSaveImageBtn} size="lg">
+                <Modal.Header closeButton>
+                    <Modal.Title>Subir imagen</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <HouseImagesForm closeModal={handleSaveImageBtn} refreshDetails={getHouseDetails} />
+                </Modal.Body>
+            </Modal>
+
         </Container >
     )
 }

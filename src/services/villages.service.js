@@ -25,8 +25,12 @@ class VillagesService {
         return this.api.get(`/findOneVillage/${id}`)
     }
 
-    editVillageInfo = (id, villageInfo) => {                    // ---> sacar del payload el id
-        return this.api.put(`/${id}/edit-info`, villageInfo)
+    editVillageInfo = (villageInfo) => {                    // ---> sacar del payload el id
+        return this.api.put(`/edit-info`, villageInfo)
+    }
+
+    editVillageImage = (villageImg) => {
+        return this.api.put(`/edit-image`, villageImg)
     }
 
     editVillageFeatures = (id, villageFeatures) => {
