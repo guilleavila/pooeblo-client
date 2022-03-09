@@ -150,7 +150,7 @@ const NewHouseForm = () => {
                         <div className='villagesResult'>
                             {
                                 filteredVillagesByName.map(village => {
-                                    return <p key={village._id} className='villageItem' key={village._id} onClick={() => handleVillageSelection(village)}>{village.name}</p>
+                                    return <p key={village._id} className='villageItem' onClick={() => handleVillageSelection(village)}>{village.name}</p>
                                 })
                             }
                         </div>)
