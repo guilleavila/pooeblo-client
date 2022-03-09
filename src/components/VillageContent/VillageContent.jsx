@@ -113,7 +113,7 @@ const VillageContent = () => {
                 {isMine && <Row>
                     <Button onClick={handleEditBtn}>Editar perfil</Button>
                 </Row>}
-                <NewPostForm />
+                <NewPostForm refreshContent={getVillageDetails}/>
 
 
 

@@ -5,7 +5,7 @@ import VillageFeaturesForm from '../../components/VillageFeaturesForm/VillageFea
 import { useEffect, useState } from 'react'
 import villagesService from '../../services/villages.service'
 
-const VillageSignupPage = () => {
+const VillageSignupPage = ({ closeModal }) => {
 
     const [step, setStep] = useState(1)
     const [villageId, setVillageId] = useState()
@@ -37,12 +37,10 @@ const VillageSignupPage = () => {
     return (
         <Container>
             <Row className="justify-content-md-center">
-                <Col md={4}>
-                    <h1>Regístrate</h1>
-                    <p>¿Eres un usuario? <Link to='/registro'>Regístrate aquí</Link></p>
+                <Col md={8}>
                     {step === 1 && <VillageSignupForm updateState={updateState} getId={getId} />}
                     {
-                        isLoaded && step === 2 && <VillageFeaturesForm {...villageDetails} />
+                        isLoaded && step === 2 && <VillageFeaturesForm {...villageDetails} closeModal={closeModal} />
 
                     }
                 </Col>

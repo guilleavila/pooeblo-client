@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import postsService from "../../services/posts.service"
 import { Form, Button } from 'react-bootstrap'
-import uploadService from "../../services/upload.service"
+import uploadOneService from "../../services/uploadOne.service"
 import { useState, useContext } from "react"
 
 
-const NewPostForm = () => {
+const NewPostForm = ({ refreshContent }) => {
 
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
@@ -36,11 +36,11 @@ const NewPostForm = () => {
         const uploadData = new FormData()
         uploadData.append('imageData', e.target.files[0])
 
-        uploadService
-            .uploadImage(uploadData)
+        uploadOneService
+            .uploadOneImage(uploadData)
             .then(({ data }) => {
                 setLoadingImage(false)
-                setPostState({ ...postState, imageUrl: data.cloudinary_url })
+                setPostState({ ...postState, image: data.cloudinary_url })
             })
             .catch(err => console.log(err))
     }
@@ -50,7 +50,10 @@ const NewPostForm = () => {
 
         postsService
             .createPost(postState)
-            .then(() => navigate(`/`))
+            .then(() => {
+                setPostState({ image: '', content: '' })
+                refreshContent()
+            })
             .catch(err => console.log(err))
     }
 
@@ -64,7 +67,7 @@ const NewPostForm = () => {
                 <Form.Control type="file" onChange={uploadPostImage} />
             </Form.Group>
 
-            <Button variant="dark" type="submit" style={{ width: '100%' }}>Publicar post</Button>
+            <Button variant="dark" type="submit" disabled={loadingImage} style={{ width: '100%' }}>Publicar post</Button>
         </Form>
     )
 }

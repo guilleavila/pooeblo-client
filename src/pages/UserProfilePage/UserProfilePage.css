@@ -1,9 +1,13 @@
 .profileImgDiv {
     width: 150px;
     height: 150px;
+    border: 1px solid red;
+    border-radius: 50%;
 }
 
 .profileImg {
-    width: 100%;
-    border-radius: 100px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
 }

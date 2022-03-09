@@ -28,10 +28,10 @@ const AppRoutes = () => {
         <Routes>
 
             <Route path='/' element={<HomePage />} />
-            <Route path='/registro' element={<UserSignupPage />} />
-            <Route path='/registro-pueblo' element={<VillageSignupPage />} />
+            {/* <Route path='/registro' element={<UserSignupPage />} />
+            <Route path='/registro-pueblo' element={<VillageSignupPage />} /> */}
             {/* <Route path='/caracteristicas/:village_id' element={<VillageFeaturesForm />} /> */}
-            <Route path='/iniciar-sesion' element={<LoginPage />} />
+            {/* <Route path='/iniciar-sesion' element={<LoginPage />} /> */}
             <Route path='/pueblos/resultados' element={<VillagesAllResultsListPage />} />
             <Route path='/pueblos/resultados/:province' element={<VillagesResultsByProvinceListPage />} />
             <Route path='/pueblos/resultados/pueblos-de-sierra' element={<VillagesResultsByMountainListPage />} />
@@ -50,7 +50,7 @@ const AppRoutes = () => {
                 <Route path="" element={<UserProfilePage />} />
             </Route>
             <Route path="/pueblos/:village_id/casas" element={<VillageHousePage />} />
-            <Route path='/nueva-casa' element={<NewHousePage />} />
+            {/* <Route path='/nueva-casa' element={<NewHousePage />} /> */}
             <Route path='/casa/:house_id' element={<HouseDetailsPage />} />
             {/* <Route path='/casa/:house_id/editar' element={<HouseEditPage />} /> */}
             <Route path='/pagar' element={<PaymentPage />} />

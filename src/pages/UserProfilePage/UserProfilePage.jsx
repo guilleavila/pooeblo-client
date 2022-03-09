@@ -11,6 +11,7 @@ import subscriptionsService from "../../services/subscriptions.service"
 import UserImageForm from "../../components/UserImageForm/UserImageForm"
 import UserEditForm from "../../components/UserEditForm/UserEditForm"
 import './UserProfilePage.css'
+import NewHouseForm from "../../components/NewHouseForm/NewHouseForm"
 
 const UserProfilePage = () => {
 
@@ -25,6 +26,7 @@ const UserProfilePage = () => {
 
     const [showImageModal, setShowImageModal] = useState(false)
     const [showUserModal, setShowUserModal] = useState(false)
+    const [showNewHouseModal, setShowNewHouseModal] = useState(false)
 
 
     useEffect(() => {
@@ -78,18 +80,19 @@ const UserProfilePage = () => {
     const handleEditUserBtn = () => setShowUserModal(true)
     const handleSaveUserBtn = () => setShowUserModal(false)
 
+    const handleNewHouseModal = () => setShowNewHouseModal(true)
+    const handleSaveNewHouseBtn = () => setShowNewHouseModal(false)
+
     return (
 
         <Container>
 
             <Row>
                 <Col sm={4}>
-                    <div className="profileImgDiv">
-                        <img className="profileImg" src={userDetails?.profileImg} alt='profile'></img>
-                    </div>
+                    <img className="profileImg" src={userDetails?.profileImg} alt='profile'></img>
                 </Col>
                 <Col sm={8}>
-                    <h1>{user?.firstName} {user?.lastName}</h1>
+                    <h1>{userDetails?.firstName} {userDetails?.lastName}</h1>
                     <Button onClick={handleEditImgBtn}>Editar imagen</Button>
                     <Button onClick={handleEditUserBtn}>Editar perfil</Button>
                 </Col>
@@ -113,8 +116,12 @@ const UserProfilePage = () => {
 
             <h2>Aquí deberían ir tus casas</h2>
             <Row>
-                < ResultsHouses houses={myHouses} width={3} />
+                <ResultsHouses houses={myHouses} width={3} />
+                <Button onClick={handleNewHouseModal}>Añadir una casa</Button>
             </Row>
+
+
+
 
             <Modal show={showImageModal} onHide={handleSaveImageBtn} size="lg">
                 <Modal.Header closeButton>
@@ -131,6 +138,15 @@ const UserProfilePage = () => {
                 </Modal.Header>
                 <Modal.Body>
                     {isLoaded && <UserEditForm {...userDetails} closeModal={handleSaveUserBtn} refreshDetails={getDetails} />}
+                </Modal.Body>
+            </Modal>
+
+            <Modal show={showNewHouseModal} onHide={handleSaveNewHouseBtn} size="lg">
+                <Modal.Header closeButton>
+                    <Modal.Title>Añadir una nueva casa</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <NewHouseForm closeModal={handleSaveNewHouseBtn} refreshDetails={getMyHouses}></NewHouseForm>
                 </Modal.Body>
             </Modal>
 

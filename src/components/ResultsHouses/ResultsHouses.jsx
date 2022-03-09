@@ -4,6 +4,8 @@ import HouseCard from "../HouseCard/HouseCard"
 
 const ResultsHouses = ({ houses, width }) => {
 
+    console.log('casas', houses)
+
     return (
         <>
             {

@@ -1,14 +1,14 @@
 import { Container, Row, Col } from "react-bootstrap"
 import LoginForm from "../../components/LoginForm/LoginForm"
 
-const LoginPage = () => {
+const LoginPage = ({ closeModal }) => {
 
     return (
         <Container>
             <Row className='justify-content-md-center'>
-                <Col md={4}>
+                <Col md={8}>
                     <h1>Inicia sesión</h1>
-                    <LoginForm />
+                    <LoginForm closeModal={closeModal} />
                 </Col>
             </Row>
         </Container>

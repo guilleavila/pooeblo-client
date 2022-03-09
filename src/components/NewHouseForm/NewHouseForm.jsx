@@ -9,7 +9,7 @@ import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
 import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 import villagesService from "../../services/villages.service"
 
-const NewHouseForm = () => {
+const NewHouseForm = ({ closeModal, refreshDetails }) => {
 
     const { user } = useContext(AuthContext)
 
@@ -127,7 +127,8 @@ const NewHouseForm = () => {
         housesService
             .createHouse(houseState)
             .then(() => {
-                navigate('/')
+                closeModal()
+                refreshDetails()
             })
             .catch(err => console.log(err))
     }

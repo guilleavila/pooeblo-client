@@ -67,60 +67,63 @@ const VillageSignupForm = ({ updateState, getId }) => {
     }
 
     return (
+        <>
 
-        <Form onSubmit={handleSubmit}>
+            <h1>Regístrate</h1>
+            <Form onSubmit={handleSubmit}>
 
 
-            <Form.Group className="mb-3">
-                <Form.Label>Nombre</Form.Label>
-                <GooglePlacesAutocomplete
-                    apiKey={process.env.REACT_APP_API_KEY} selectProps={{ value, onChange: setValue }}
-                />
-            </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Nombre</Form.Label>
+                    <GooglePlacesAutocomplete
+                        apiKey={process.env.REACT_APP_API_KEY} selectProps={{ value, onChange: setValue }}
+                    />
+                </Form.Group>
 
-            <Form.Group className="mb-3">
-                {/* <Form.Label>Nombre</Form.Label> */}
-                <Form.Control type="hidden" name="name" value={villageName} onChange={handleInputChange} />
-            </Form.Group>
+                <Form.Group className="mb-3">
+                    {/* <Form.Label>Nombre</Form.Label> */}
+                    <Form.Control type="hidden" name="name" value={villageName} onChange={handleInputChange} />
+                </Form.Group>
 
-            <Form.Group className="mb-3">
-                {/* <Form.Label>Lat</Form.Label> */}
-                <Form.Control type="hidden" name="lat" value={latitude} onChange={handleInputChange} />
-            </Form.Group>
+                <Form.Group className="mb-3">
+                    {/* <Form.Label>Lat</Form.Label> */}
+                    <Form.Control type="hidden" name="lat" value={latitude} onChange={handleInputChange} />
+                </Form.Group>
 
-            <Form.Group className="mb-3">
-                {/* <Form.Label>Lng</Form.Label> */}
-                <Form.Control type="hidden" name="lng" value={longitude} onChange={handleInputChange} />
-            </Form.Group>
+                <Form.Group className="mb-3">
+                    {/* <Form.Label>Lng</Form.Label> */}
+                    <Form.Control type="hidden" name="lng" value={longitude} onChange={handleInputChange} />
+                </Form.Group>
 
-            <Form.Group className="mb-3">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" name="email" value={signupForm.email} onChange={handleInputChange} />
-            </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control type="email" name="email" value={signupForm.email} onChange={handleInputChange} />
+                </Form.Group>
 
-            <Form.Group className="mb-3">
-                <Form.Label>Contraseña</Form.Label>
-                <Form.Control type="password" name="password" value={signupForm.password} onChange={handleInputChange} />
-            </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Contraseña</Form.Label>
+                    <Form.Control type="password" name="password" value={signupForm.password} onChange={handleInputChange} />
+                </Form.Group>
 
-            <Form.Group className="mb-3">
-                <Form.Label>Nº de teléfono</Form.Label>
-                <Form.Control type="text" name="phoneNumber" value={signupForm.phoneNumber} onChange={handleInputChange} />
-            </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Nº de teléfono</Form.Label>
+                    <Form.Control type="text" name="phoneNumber" value={signupForm.phoneNumber} onChange={handleInputChange} />
+                </Form.Group>
 
-            <Form.Group className="mb-3">
-                {/* <Form.Label>Comunidad Autónoma</Form.Label> */}
-                <Form.Control type="hidden" name="CCAA" value={comAut} onChange={handleInputChange} />
-            </Form.Group>
+                <Form.Group className="mb-3">
+                    {/* <Form.Label>Comunidad Autónoma</Form.Label> */}
+                    <Form.Control type="hidden" name="CCAA" value={comAut} onChange={handleInputChange} />
+                </Form.Group>
 
-            <Form.Group className="mb-3">
-                {/* <Form.Label>Provincia</Form.Label> */}
-                <Form.Control type="hidden" name="province" value={prov} onChange={handleInputChange} />
-            </Form.Group>
+                <Form.Group className="mb-3">
+                    {/* <Form.Label>Provincia</Form.Label> */}
+                    <Form.Control type="hidden" name="province" value={prov} onChange={handleInputChange} />
+                </Form.Group>
 
-            <Button variant="dark" type="submit" style={{ width: '100%' }}>Siguiente</Button>
+                <Button variant="dark" type="submit" style={{ width: '100%' }}>Siguiente</Button>
 
-        </Form>
+            </Form>
+        </>
 
     )
 }

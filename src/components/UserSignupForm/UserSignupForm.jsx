@@ -3,7 +3,7 @@ import { Form, Button } from 'react-bootstrap'
 import authService from '../../services/auth.service'
 import { useNavigate } from 'react-router-dom'
 
-const UserSignupForm = () => {
+const UserSignupForm = ({ closeModal }) => {
 
     const [signupForm, setSignupForm] = useState({
         firstName: '',
@@ -30,7 +30,8 @@ const UserSignupForm = () => {
         authService
             .userSignup(signupForm)
             .then(({ data }) => {
-                navigate('/iniciar-sesion')
+                closeModal()
+                // navigate('/iniciar-sesion')
             })
             .catch(err => console.log(err))
     }
