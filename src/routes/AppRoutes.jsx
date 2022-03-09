@@ -18,6 +18,7 @@ import PrivateRoute from './PrivateRoute'
 import { useContext } from 'react'
 import { AuthContext } from '../context/auth.context'
 import VillageHousePage from '../pages/VillageHousePage/VillageHousePage'
+import PostsFeedPage from '../pages/PostsFeedPage/PostsFeedPage'
 
 
 const AppRoutes = () => {
@@ -54,6 +55,8 @@ const AppRoutes = () => {
             <Route path='/casa/:house_id' element={<HouseDetailsPage />} />
             {/* <Route path='/casa/:house_id/editar' element={<HouseEditPage />} /> */}
             <Route path='/pagar' element={<PaymentPage />} />
+            <Route path='/feed' element={<PostsFeedPage />} />
+
 
         </Routes>
     )
