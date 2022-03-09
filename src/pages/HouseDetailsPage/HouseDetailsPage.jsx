@@ -184,7 +184,10 @@ const HouseDetailsPage = () => {
                 </Col>
             </Row>
             <Row>
-                {isMine && <Button onClick={handleEditBtn}>Editar información</Button>}
+                {isMine &&
+                    <>
+                        <Button onClick={handleEditBtn}>Editar información</Button>
+                    </>}
             </Row>
             <Row>
                 {isLoaded && <HouseImages houseImages={houseImages} {...houseDetails} isMine={isMine} updataeImagesState={updataeImagesState} getHouseDetails={getHouseDetails}></HouseImages>}
