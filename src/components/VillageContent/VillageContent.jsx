@@ -8,6 +8,8 @@ import VillageFeaturesForm from "../../components/VillageFeaturesForm/VillageFea
 import VillageImageForm from "../VillageImageForm/VillageImageForm"
 import { Link, useParams } from 'react-router-dom'
 import './VillageContent.css'
+import FollowBtn from "../FollowBtn/FollowBtn"
+import userService from "../../services/user.service"
 
 
 const VillageContent = () => {
@@ -17,6 +19,9 @@ const VillageContent = () => {
 
     const [villageDetails, setVillageDetails] = useState({})
     const [isLoaded, setIsLoaded] = useState(false)
+
+    const [isFollowing, setIsFollowing] = useState()
+    const [btnState, setBtnState] = useState('Cargando...')
 
     const [houses, setHouses] = useState([])
     const [housesLoaded, setHousesLoaded] = useState(false)
@@ -77,6 +82,55 @@ const VillageContent = () => {
         user.name && setIsMine(true)
     }
 
+    useEffect(() => {
+        villageDetails.name && checkIfFollowed()
+    }, [user, villageDetails])
+
+    const checkIfFollowed = () => {
+        userService
+            .getUserDetails()
+            .then(({ data }) => {
+
+                let foundFollowedVillage = ''
+
+                data?.followedVillages.forEach(elm => {
+                    if (elm.name === villageDetails.name) {
+                        foundFollowedVillage = elm.name
+                    }
+                })
+
+                if (foundFollowedVillage !== '') {
+                    setIsFollowing(true)
+                    setBtnState('Dejar de seguir')
+                } else {
+                    setIsFollowing(false)
+                    setBtnState('Seguir pueblo')
+                }
+            })
+    }
+
+
+    const handleFollowBtn = () => {
+
+        if (!isFollowing) {
+            villagesService
+                .followVillage(village_id)
+                .then(() => {
+                    setIsFollowing(true)
+                    setBtnState('Dejar de seguir')
+                })
+                .catch(err => console.log(err))
+        } else if (isFollowing) {
+            villagesService
+                .unfollowVillage(village_id)
+                .then(() => {
+                    setIsFollowing(false)
+                    setBtnState('Seguir pueblo')
+                })
+                .catch(err => console.log(err))
+        }
+    }
+
     const handleEditBtn = () => setShowModal(true)
     const handleSaveBtn = () => setShowModal(false)
 
@@ -94,6 +148,7 @@ const VillageContent = () => {
                     <Col>
                         <h1>{villageDetails?.name}</h1>
                         <h3>{villageDetails?.province}, {villageDetails?.CCAA}</h3>
+                        {!isMine && <FollowBtn btnState={btnState} handleFollowBtn={handleFollowBtn} />}
                         {/* {isLoaded && <h3>{villageDetails?.features.distanceToCity}, {villageDetails?.CCAA}</h3>} */}
                     </Col>
                 </Row>
@@ -112,7 +167,7 @@ const VillageContent = () => {
                 {isMine && <Row>
                     <Button onClick={handleEditBtn}>Editar perfil</Button>
                 </Row>}
-                <NewPostForm refreshContent={getVillageDetails} />
+                {/* <NewPostForm refreshContent={getVillageDetails} /> */}
 
 
 
