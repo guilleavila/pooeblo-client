@@ -96,6 +96,7 @@ const Bookings = ({ houseId, bookings }) => {
 
                     <>
                         <h3>Haz una reserva</h3>
+                        <h5>Te quedan {daysLeftToBook} días disponibles para reservar en esta casa</h5>
 
                         <Form onSubmit={handleSubmit}>
                             <Button variant="dark" type="submit" style={{ width: '100%' }}>Crear reserva</Button>

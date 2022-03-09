@@ -9,6 +9,8 @@ import ImageForm from "../../components/ImageForm/ImageForm"
 import './VillageProfilePage.css'
 import { Link } from 'react-router-dom'
 import UserSignupPage from "../UserSignupPage/UserSignupPage"
+import NewPostForm from "../../components/NewPostForm/NewPostForm"
+import postsService from "../../services/posts.service"
 
 
 const VillageProfilePage = () => {
@@ -20,6 +22,8 @@ const VillageProfilePage = () => {
 
     const [houses, setHouses] = useState([])
     const [housesLoaded, setHousesLoaded] = useState(false)
+
+    const [posts, setPosts] = useState([])
 
     const [showModal, setShowModal] = useState(false)
     const [showImageModal, setShowImageModal] = useState(false)
@@ -47,6 +51,15 @@ const VillageProfilePage = () => {
             .then(({ data }) => {
                 setHouses(data)
                 setHousesLoaded(true)
+            })
+            .catch(err => console.log(err))
+    }
+
+    const getAllVillagePosts = () => {
+        postsService
+            .getAllPostOfOneVillage(user._id)
+            .then(({ data }) => {
+                setPosts(data)
             })
             .catch(err => console.log(err))
     }
@@ -86,6 +99,8 @@ const VillageProfilePage = () => {
                 <Row>
                     <Button onClick={handleEditBtn}>Editar perfil</Button>
                 </Row>
+
+                <NewPostForm />
 
 
 

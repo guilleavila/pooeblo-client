@@ -12,6 +12,11 @@ import HouseImages from "../../components/HouseImages/HouseImages"
 import Bookings from "../../components/Bookings/Bookings"
 import HouseInfo from "../../components/HouseInfo/HouseInfo"
 import HouseEditForm from "../../components/HouseEditForm/HouseEditForm"
+import AllRentersBookingsInThisHouse from "../../components/AllRentersBookingsInThisHouse/AllRentersBookingsInThisHouse"
+import Moment, { localeData } from 'moment';
+import { extendMoment } from 'moment-range'
+
+const moment = extendMoment(Moment)
 
 const HouseDetailsPage = () => {
 
@@ -172,6 +177,7 @@ const HouseDetailsPage = () => {
                     <h3>{houseDetails?.village?.name} - {houseDetails?.village?.province}, {houseDetails?.village?.CCAA}</h3>
                     <p>{houseDetails?.street}</p>
                     {isSuscriber ? (bookingsLoaded && <Bookings houseId={house_id} bookings={bookings} />) : <NewSubscriptionForm {...houseDetails} />}
+                    {isMine && <AllRentersBookingsInThisHouse houseId={house_id} moment={moment} />}
                 </Col>
                 <Col sm={3}>
                     <FavBtn btnState={btnState} handleFavBtn={handleFavBtn} />
