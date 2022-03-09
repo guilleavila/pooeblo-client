@@ -1,0 +1,9 @@
+.profileImgDiv {
+    width: 150px;
+    height: 150px;
+}
+
+.profileImg {
+    width: 100%;
+    border-radius: 100px;
+}

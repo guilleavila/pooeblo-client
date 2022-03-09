@@ -25,6 +25,10 @@ class UserService {
         return this.api.put(`/edit`, userInfo)
     }
 
+    editUserImage = img => {
+        return this.api.put(`/edit-image`, img)
+    }
+
     deleteUser = id => {
         return this.api.delete(`/${id}/delete`)
     }

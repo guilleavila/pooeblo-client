@@ -17,8 +17,6 @@ const VillageFeaturesForm = ({ _id, features, closeModal, refreshDetails }) => {
         otherServices: features.otherServices
     })
 
-    // const { village_id } = useParams()
-    const navigate = useNavigate()
 
     const handleInputChange = e => {
         const { name, value } = e.target
@@ -42,7 +40,6 @@ const VillageFeaturesForm = ({ _id, features, closeModal, refreshDetails }) => {
         villagesService
             .editVillageFeatures(_id, featuresForm)
             .then(() => {
-                // navigate('/iniciar-sesion')
                 closeModal()
                 refreshDetails()
             })

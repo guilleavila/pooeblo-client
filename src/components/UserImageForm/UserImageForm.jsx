@@ -2,18 +2,15 @@ import { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import uploadService from '../../services/upload.service'
 import uploadOneService from '../../services/uploadOne.service'
-import villagesService from '../../services/villages.service'
+import userService from '../../services/user.service'
 
-const ImageForm = ({ closeModal, refreshDetails }) => {
-
-    const [loadingImage, setLoadingImage] = useState(false)
+const UserImageForm = ({ closeModal, refreshDetails }) => {
 
     // form state
-    const [imageForm, setImageForm] = useState({
-        images: []
-    })
+    const [imageForm, setImageForm] = useState()
+    const [loadingImage, setLoadingImage] = useState(false)
 
-    const uploadVillageImage = e => {
+    const uploadUserImage = e => {
 
         setLoadingImage(true)
 
@@ -33,14 +30,14 @@ const ImageForm = ({ closeModal, refreshDetails }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        villagesService
-            .editVillageImage(imageForm)
+        userService
+            .editUserImage(imageForm)
             .then(() => {
+                setLoadingImage(false)
                 closeModal()
                 refreshDetails()
-
             })
-            .catch(err => console.log(err))
+
     }
 
     return (
@@ -48,16 +45,16 @@ const ImageForm = ({ closeModal, refreshDetails }) => {
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
                 <Form.Label>Imágenes</Form.Label>
-                <Form.Control type="file" onChange={uploadVillageImage} />
+                <Form.Control type="file" onChange={uploadUserImage} />
                 <Form.Text className="text-muted">
                     Máx. una imagen
                 </Form.Text>
             </Form.Group>
 
-            <Button variant="dark" type="submit" style={{ width: '100%' }}>Subir imagen</Button>
+            <Button variant="dark" type="submit" disabled={loadingImage} style={{ width: '100%' }}>Subir imagen</Button>
 
         </Form>
     )
 }
 
-export default ImageForm
+export default UserImageForm

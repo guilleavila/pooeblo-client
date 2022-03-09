@@ -6,6 +6,7 @@ import { AuthContext } from "../../context/auth.context"
 import userService from "../../services/user.service"
 import FollowBtn from "../../components/FollowBtn/FollowBtn"
 import { GoogleMap, useJsApiLoader, LoadScript, Marker } from '@react-google-maps/api';
+import VillageContent from "../../components/VillageContent/VillageContent"
 
 
 const VillageDetailsPage = () => {
@@ -107,20 +108,7 @@ const VillageDetailsPage = () => {
         <section>
 
             <Container>
-                <h1>Detalles de {villageDetails.name}</h1>
-                <hr />
-                <FollowBtn btnState={btnState} handleFollowBtn={handleFollowBtn} />
-                <Row>
-                    <Col md={{ span: 4, offset: 1 }}>
-                        <h3>CCAA</h3>
-                        <p>{villageDetails.CCAA}</p>
-                        <h3>Provincia</h3>
-                        <p>{villageDetails.province}</p>
-                    </Col>
-
-                    {/* <Col md={{ span: 4, offset: 1 }}> */}
-                    {/* </Col> */}
-                </Row>
+                <VillageContent></VillageContent>
 
                 {
                     isLoaded2 && isLoaded && <GoogleMap

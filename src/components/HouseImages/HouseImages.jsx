@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useState } from "react"
 import { Container, Row, Col, Button, Modal } from "react-bootstrap"
 import housesService from "../../services/houses.service"
-import HouseImagesForm from "../ImageForm/ImageForm"
+import HouseImagesForm from "../HouseImagesForm/HouseImagesForm"
 import './HouseImages.css'
 
 

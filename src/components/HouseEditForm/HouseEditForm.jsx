@@ -22,11 +22,7 @@ const HouseEditForm = ({ house_id, name, description, priceDay, services, roomsD
         const { name, value } = e.target
         setHouseState({
             ...houseState,
-            [name]: value,
-            // street: street,
-            // lat: latitude,
-            // lng: longitude,
-            // village: villageId
+            [name]: value
         })
     }
 

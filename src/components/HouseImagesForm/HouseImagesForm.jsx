@@ -4,14 +4,14 @@ import uploadService from '../../services/upload.service'
 import housesService from '../../services/houses.service'
 import { useParams } from 'react-router-dom'
 
-const ImageForm = ({ closeModal, refreshDetails }) => {
+const HouseImagesForm = ({ closeModal, refreshDetails }) => {
 
-    const [loadingImage, setLoadingImage] = useState(false)
 
     // form state
-    const [imagesForm, setImagesForm] = useState({
+    const [houseImages, setHouseImages] = useState({
         images: []
     })
+    const [loadingImage, setLoadingImage] = useState(false)
 
     const { house_id } = useParams()
 
@@ -28,8 +28,7 @@ const ImageForm = ({ closeModal, refreshDetails }) => {
             .uploadImage(formData)
             .then(({ data }) => {
                 setLoadingImage(false)
-                console.log(data.cloudinary_urls)
-                setImagesForm({ ...imagesForm, images: data.cloudinary_urls })
+                setHouseImages({ ...houseImages, images: data.cloudinary_urls })
             })
             .catch(err => console.log(err))
 
@@ -39,7 +38,7 @@ const ImageForm = ({ closeModal, refreshDetails }) => {
         e.preventDefault()
 
         housesService
-            .uploadImages(house_id, imagesForm)
+            .uploadImages(house_id, houseImages)
             .then(() => {
                 closeModal()
                 refreshDetails()
@@ -50,14 +49,14 @@ const ImageForm = ({ closeModal, refreshDetails }) => {
 
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
-                <Form.Label>Imágenes</Form.Label>
-                <Form.Control type="file" onChange={uploadHouseImages} />
+                <Form.Label>Imágenesdjfliwjs</Form.Label>
+                <Form.Control type="file" onChange={uploadHouseImages} multiple />
             </Form.Group>
 
-            <Button variant="dark" type="submit" style={{ width: '100%' }}>Subir imágenes</Button>
+            <Button variant="dark" type="submit" disabled={loadingImage} style={{ width: '100%' }}>Subir imágenes</Button>
 
         </Form>
     )
 }
 
-export default ImageForm
+export default HouseImagesForm

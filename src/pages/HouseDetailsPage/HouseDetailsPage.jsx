@@ -181,7 +181,7 @@ const HouseDetailsPage = () => {
                 {isMine && <Button onClick={handleEditBtn}>Editar información</Button>}
             </Row>
             <Row>
-                {isLoaded && <HouseImages houseImages={houseImages} {...houseDetails} isMine={isMine} updataeImagesState={updataeImagesState}></HouseImages>}
+                {isLoaded && <HouseImages houseImages={houseImages} {...houseDetails} isMine={isMine} updataeImagesState={updataeImagesState} getHouseDetails={getHouseDetails}></HouseImages>}
             </Row>
             <Row>
                 {isLoaded && <HouseInfo {...houseDetails}></HouseInfo>}

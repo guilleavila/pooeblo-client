@@ -36,7 +36,10 @@ const AppRoutes = () => {
             <Route path='/pueblos/resultados/:province' element={<VillagesResultsByProvinceListPage />} />
             <Route path='/pueblos/resultados/pueblos-de-sierra' element={<VillagesResultsByMountainListPage />} />
             <Route path='/pueblos/resultados/pueblos-de-costa' element={<VillagesResultsByCoastListPage />} />
-            <Route path="/pueblos/:village_id" element={<VillageDetailsPage />} />
+
+            <Route path="/pueblos/:village_id" element={<PrivateRoute />}>
+                <Route path="" element={<VillageDetailsPage />} />
+            </Route>
 
             <Route path="/perfil" element={<PrivateRoute />}>
                 {user?.firstName && <Route path="" element={<UserProfilePage />} />}

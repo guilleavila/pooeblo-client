@@ -1,13 +1,16 @@
 import { useContext, useState } from "react"
 import { AuthContext } from "../../context/auth.context"
 import MyHouses from "../../components/MyHouses/MyHouses"
-import { Container, Row } from "react-bootstrap"
+import { Container, Row, Col, Button, Modal } from "react-bootstrap"
 import MyFollowedVillages from "../../components/MyFollowedVillages/MyFollowedVillages"
 import { useEffect } from "react"
 import userService from "../../services/user.service"
 import ResultsHouses from "../../components/ResultsHouses/ResultsHouses"
 import MyRentings from "../../components/MyRentings/MyRentings"
 import subscriptionsService from "../../services/subscriptions.service"
+import UserImageForm from "../../components/UserImageForm/UserImageForm"
+import UserEditForm from "../../components/UserEditForm/UserEditForm"
+import './UserProfilePage.css'
 
 const UserProfilePage = () => {
 
@@ -19,6 +22,10 @@ const UserProfilePage = () => {
     const [subscriptions, setSubscriptions] = useState([])
     // const [subsLoaded, setSubsLoaded] = useState(false)
     const [myHouses, setMyHouses] = useState([])
+
+    const [showImageModal, setShowImageModal] = useState(false)
+    const [showUserModal, setShowUserModal] = useState(false)
+
 
     useEffect(() => {
         if (user) {
@@ -34,8 +41,6 @@ const UserProfilePage = () => {
         userService
             .getUserDetails()
             .then(({ data }) => {
-
-                console.log('Esto traigo del back', data)
                 setUserDetails(data)
                 setIsLoaded(true)
             })
@@ -67,11 +72,29 @@ const UserProfilePage = () => {
             .catch(err => console.log(err))
     }
 
+    const handleEditImgBtn = () => setShowImageModal(true)
+    const handleSaveImageBtn = () => setShowImageModal(false)
+
+    const handleEditUserBtn = () => setShowUserModal(true)
+    const handleSaveUserBtn = () => setShowUserModal(false)
+
     return (
 
         <Container>
 
-            <h1>Bienvenid@ {user?.firstName}</h1>
+            <Row>
+                <Col sm={4}>
+                    <div className="profileImgDiv">
+                        <img className="profileImg" src={userDetails?.profileImg} alt='profile'></img>
+                    </div>
+                </Col>
+                <Col sm={8}>
+                    <h1>{user?.firstName} {user?.lastName}</h1>
+                    <Button onClick={handleEditImgBtn}>Editar imagen</Button>
+                    <Button onClick={handleEditUserBtn}>Editar perfil</Button>
+                </Col>
+            </Row>
+
 
             <h2>Aquí deberían ir tus rentings</h2>
             <Row>
@@ -92,6 +115,24 @@ const UserProfilePage = () => {
             <Row>
                 < ResultsHouses houses={myHouses} width={3} />
             </Row>
+
+            <Modal show={showImageModal} onHide={handleSaveImageBtn} size="lg">
+                <Modal.Header closeButton>
+                    <Modal.Title>Subir imagen</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {isLoaded && <UserImageForm closeModal={handleSaveImageBtn} refreshDetails={getDetails} />}
+                </Modal.Body>
+            </Modal>
+
+            <Modal show={showUserModal} onHide={handleSaveUserBtn} size="lg">
+                <Modal.Header closeButton>
+                    <Modal.Title>Editar perfil</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {isLoaded && <UserEditForm {...userDetails} closeModal={handleSaveUserBtn} refreshDetails={getDetails} />}
+                </Modal.Body>
+            </Modal>
 
         </Container>
     )

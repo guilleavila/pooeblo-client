@@ -19,7 +19,7 @@ const NewHouseForm = () => {
     const [street, setStreet] = useState()
     const [village, setVillage] = useState()
     const [villageId, setVillageId] = useState()
-
+    const [loadingImage, setLoadingImage] = useState(false)
     const [filteredVillagesByName, setFilteredVillagesByName] = useState([])
 
     // Google api
@@ -47,7 +47,6 @@ const NewHouseForm = () => {
         roomsDescription: '',
         maxGuests: 0,
         images: [],
-        availableDaysLeft: 0,
         maxGuests: 0,
         lat: 0,
         lng: 0,
@@ -65,7 +64,6 @@ const NewHouseForm = () => {
 
     const navigate = useNavigate()
 
-    const [loadingImage, setLoadingImage] = useState(false)
 
 
     // Filter villages names
@@ -116,7 +114,6 @@ const NewHouseForm = () => {
             .uploadImage(formData)
             .then(({ data }) => {
                 setLoadingImage(false)
-                console.log(data.cloudinary_urls)
                 setHouseState({ ...houseState, images: data.cloudinary_urls })
             })
             .catch(err => console.log(err))
@@ -144,11 +141,6 @@ const NewHouseForm = () => {
                 <Form.Label>Nombre de la casa</Form.Label>
                 <Form.Control type="text" name="name" value={houseState.name} onChange={handleInputChange} />
             </Form.Group>
-            {/* 
-            <Form.Group className="mb-3">
-                <Form.Label>Pueblo</Form.Label>
-                <Form.Control type="text" name="village" value={houseState.village} onChange={handleInputChange} />
-            </Form.Group> */}
 
             <Form.Group className="mb-3">
                 <Form.Label>Pueblo</Form.Label>
@@ -205,27 +197,7 @@ const NewHouseForm = () => {
                 </Form.Text>
             </Form.Group>
 
-            <Form.Group className="mb-3">
-                <Form.Label>Días disponibles</Form.Label>
-                <Form.Control type="number" name="availableDaysLeft" value={houseState.availableDaysLeft} onChange={handleInputChange} />
-            </Form.Group>
-
-            {/* <Form.Group className="mb-3">
-                <Form.Label>Lat</Form.Label>
-                <Form.Control type="number" name="lat" value={latitude} onChange={handleInputChange} />
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-                <Form.Label>Lng</Form.Label>
-                <Form.Control type="number" name="lng" value={longitude} onChange={handleInputChange} />
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-                <Form.Label>Calle</Form.Label>
-                <Form.Control type="text" name="lng" value={street} onChange={handleInputChange} />
-            </Form.Group> */}
-
-            <Button variant="dark" type="submit" style={{ width: '100%' }}>Crear casa</Button>
+            <Button variant="dark" type="submit" disabled={loadingImage} style={{ width: '100%' }}>Crear casa</Button>
 
         </Form>
     )
