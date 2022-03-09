@@ -87,37 +87,41 @@ const UserProfilePage = () => {
 
         <Container>
 
-            <Row>
-                <Col sm={4}>
-                    <img className="profileImg" src={userDetails?.profileImg} alt='profile'></img>
-                </Col>
-                <Col sm={8}>
-                    <h1>{userDetails?.firstName} {userDetails?.lastName}</h1>
-                    <Button onClick={handleEditImgBtn}>Editar imagen</Button>
-                    <Button onClick={handleEditUserBtn}>Editar perfil</Button>
+            <Row className="userInfo">
+                <Col>
+                    <Row className="align-items-center">
+                        <Col className="col" md={{ span: 2, offset: 3 }}>
+                            <img className="profileImg" src={userDetails?.profileImg} alt='profile'></img>
+                        </Col>
+                        <Col className="col" md={6}>
+                            <h1 className="name">{userDetails?.firstName} {userDetails?.lastName}</h1>
+                            <Button className="editBtn myBtn" onClick={handleEditImgBtn}>Editar imagen</Button>
+                            <Button className="editBtn myBtn" onClick={handleEditUserBtn}>Editar perfil</Button>
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
 
 
-            <h2>Aquí deberían ir tus rentings</h2>
+            <h2 className="section-title">Tus suscripciones</h2>
             <Row>
                 < ResultsHouses houses={subscriptions} width={4} />
             </Row>
 
-            <h2>Aquí deberían ir los pueblos a los que sigues</h2>
+            <h2 className="section-title">Pueblos a los que sigues</h2>
             <Row>
                 {isLoaded && < MyFollowedVillages followedVillages={userDetails.followedVillages} />}
             </Row>
 
-            <h2>Aquí deberían ir tus casas favoritas</h2>
+            <h2 className="section-title">Tus casas favoritas</h2>
             <Row>
                 {isLoaded && < ResultsHouses houses={userDetails.favHouses} width={6} />}
             </Row>
 
-            <h2>Aquí deberían ir tus casas</h2>
+            <h2 className="section-title">Tus casas</h2>
             <Row>
                 <ResultsHouses houses={myHouses} width={3} />
-                <Button onClick={handleNewHouseModal}>Añadir una casa</Button>
+                <Button className='myBtn newHouseBtn' onClick={handleNewHouseModal}>Añadir una casa</Button>
             </Row>
 
 

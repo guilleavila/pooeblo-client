@@ -1,12 +1,13 @@
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import './VillageCard.css'
 
 const VillageCard = ({ name, province, CCAA, profileImg, _id }) => {
 
     return (
-        <Card className='villageCard' style={{ width: '20rem' }}>
+        <Card className='villageCard'>
             <Link to={`/pueblos/${_id}`}>
-                <Card.Img variant="top" src={profileImg} />
+                <Card.Img class="villageCardImg" variant="top" src={profileImg} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>{CCAA} {province}</Card.Text>

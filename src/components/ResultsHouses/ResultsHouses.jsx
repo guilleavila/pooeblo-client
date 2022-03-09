@@ -17,7 +17,6 @@ const ResultsHouses = ({ houses, width }) => {
                     )
                 })
             }
-            <hr />
         </>
     )
 }

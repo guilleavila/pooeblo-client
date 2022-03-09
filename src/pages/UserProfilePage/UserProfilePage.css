@@ -1,13 +1,59 @@
 .profileImgDiv {
     width: 150px;
     height: 150px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     border-radius: 50%;
 }
 
 .profileImg {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
     border-radius: 50%;
+}
+
+.userInfo {
+    width: 98%;
+    margin: 0 auto 50px auto;
+    padding: 0 auto;
+}
+
+.section-title{
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 30px 0 30px 0;
+}
+
+.myBtn{
+   
+    border-radius: 50px;
+    margin: 20px auto 100px auto;
+    border-color: #f9a77a;
+    color: #f9a77a;
+    background-color: #fff;
+}
+
+.myBtn:hover{
+    color: white;
+    border-color: #f9a77a;
+    background-color: #f9a77a;
+}
+
+.editBtn{
+    width: 150px;
+    padding: 10px 0px;
+    margin: 10px 10px;
+}
+
+.newHouseBtn{
+    width: 300px;
+    padding: 15px 0px;
+}
+
+.prueba{
+    align-items: center;
+}
+
+.name{
+    font-size: 2rem;
 }
