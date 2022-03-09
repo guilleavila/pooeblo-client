@@ -6,7 +6,6 @@ import VillageFeatures from "../../components/VillageFeatures/VillageFeatures"
 import ResultsHouses from "../../components/ResultsHouses/ResultsHouses"
 import VillageFeaturesForm from "../../components/VillageFeaturesForm/VillageFeaturesForm"
 import VillageImageForm from "../VillageImageForm/VillageImageForm"
-import NewPostForm from "../NewPostForm/NewPostForm"
 import { Link, useParams } from 'react-router-dom'
 import './VillageContent.css'
 
@@ -113,7 +112,6 @@ const VillageContent = () => {
                 {isMine && <Row>
                     <Button onClick={handleEditBtn}>Editar perfil</Button>
                 </Row>}
-                <NewPostForm />
 
 
 
