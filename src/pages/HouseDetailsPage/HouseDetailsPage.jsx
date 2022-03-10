@@ -15,6 +15,7 @@ import HouseEditForm from "../../components/HouseEditForm/HouseEditForm"
 import AllRentersBookingsInThisHouse from "../../components/AllRentersBookingsInThisHouse/AllRentersBookingsInThisHouse"
 import Moment, { localeData } from 'moment';
 import { extendMoment } from 'moment-range'
+import MyNextBookingsInThisHouse from "../../components/MyNextBookingsInThisHouse/MyNextBookingsInThisHouse"
 
 const moment = extendMoment(Moment)
 
@@ -38,7 +39,12 @@ const HouseDetailsPage = () => {
     const { house_id } = useParams()
     const { user } = useContext(AuthContext)
 
-    useEffect(() => {
+
+    function updataeImagesState(images) {
+        setHouseImages(images)
+    }
+
+    const getBookings = () => {
         housesService
             .getAllBookingsOfOneHose(house_id)
             .then(({ data }) => {
@@ -52,15 +58,11 @@ const HouseDetailsPage = () => {
                 setBookingsLoaded(true)
             })
             .catch(err => console.log(err))
-    }, [])
-
-
-    function updataeImagesState(images) {
-        setHouseImages(images)
     }
 
     useEffect(() => {
         getHouseDetails()
+        getBookings()
     }, [])
 
     const getHouseDetails = () => {
@@ -187,16 +189,21 @@ const HouseDetailsPage = () => {
             </Row>
 
             <Row>
-                {isLoaded && <HouseInfo {...houseDetails}></HouseInfo>}
-                {isSuscriber ? (bookingsLoaded && <Bookings houseId={house_id} bookings={bookings} />) : <NewSubscriptionForm {...houseDetails} />}
-                {isMine && <AllRentersBookingsInThisHouse houseId={house_id} moment={moment} />}
+                <Col sm={7}>
+                    {isLoaded && <HouseInfo {...houseDetails}></HouseInfo>}
+                </Col>
+                <Col sm={{ span: 4, offset: 1 }}>
+                    {isSuscriber ? (bookingsLoaded && <Bookings houseId={house_id} bookings={bookings} refreshBookings={getBookings} refreshDetails={getHouseDetails} />) : <NewSubscriptionForm {...houseDetails} />}
+                    <MyNextBookingsInThisHouse houseId={house_id} moment={moment} />
+                    {isMine && <AllRentersBookingsInThisHouse houseId={house_id} moment={moment} />}
+                </Col>
             </Row>
 
             <Row>
                 {isMine &&
-                    <>
-                        <Button onClick={handleEditBtn}>Editar información</Button>
-                    </>}
+                    <Col>
+                        <Button className="myBtn" onClick={handleEditBtn}>Editar información</Button>
+                    </Col>}
             </Row>
 
             <Modal show={showModal} onHide={handleSaveBtn} size="lg">

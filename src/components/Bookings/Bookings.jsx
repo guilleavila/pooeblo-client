@@ -9,10 +9,11 @@ import Moment, { localeData } from 'moment';
 import { extendMoment } from 'moment-range'
 import { END_DATE } from 'react-dates/constants';
 import MyNextBookingsInThisHouse from "../MyNextBookingsInThisHouse/MyNextBookingsInThisHouse"
+import './Bookings.css'
 
 const moment = extendMoment(Moment)
 
-const Bookings = ({ houseId, bookings }) => {
+const Bookings = ({ houseId, bookings, refreshBookings, refreshDetails }) => {
 
     const { user } = useContext(AuthContext)
 
@@ -30,6 +31,11 @@ const Bookings = ({ houseId, bookings }) => {
     })
 
     useEffect(() => {
+        getSubscriptions()
+
+    }, [user])
+
+    const getSubscriptions = () => {
 
         housesService
             .getSubscriptionOfOneUserForThisHouse(houseId)
@@ -38,8 +44,7 @@ const Bookings = ({ houseId, bookings }) => {
                 setDaysLeftToBook(data[0].daysLeftToBook)
             })
             .catch(err => console.log(err))
-
-    }, [user])
+    }
 
     const navigate = useNavigate()
 
@@ -78,7 +83,9 @@ const Bookings = ({ houseId, bookings }) => {
         bookingsService
             .createBooking(bookingState)
             .then(() => {
-                navigate('/perfil')
+                getSubscriptions()
+                refreshDetails()
+                refreshBookings()
             })
             .catch(err => console.log(err))
     }
@@ -90,37 +97,37 @@ const Bookings = ({ houseId, bookings }) => {
 
 
     return (
-        <article>
+        <article className="newBooking">
             {
                 daysLeftToBook <= 0 ? <p>Has agotado tus días</p> :
 
                     <>
                         <h3>Haz una reserva</h3>
-                        <h5>Te quedan {daysLeftToBook} días disponibles para reservar en esta casa</h5>
+                        <p className="daysLeft">Te quedan {daysLeftToBook} días disponibles para reservar en esta casa</p>
+
+                        <div className="datePickerDiv">
+                            {
+                                <DateRangePicker className="datePicker"
+
+                                    startDate={startDate} // momentPropTypes.momentObj or null,
+                                    startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+                                    endDate={endDate} // momentPropTypes.momentObj or null,
+                                    endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                                    onDatesChange={({ startDate, endDate }) => handleInputChange(startDate, endDate)}
+
+
+                                    // PropTypes.func.isRequired,
+                                    focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                                    onFocusChange={focusedInput => setFocusedInput(focusedInput)} // PropTypes.func.isRequired,
+                                    isDayBlocked={isBlocked}
+                                    isOutsideRange={isOutsideRange}
+                                />
+                            }
+                        </div>
 
                         <Form onSubmit={handleSubmit}>
-                            <Button variant="dark" type="submit" style={{ width: '100%' }}>Crear reserva</Button>
+                            <Button className="myBtn" variant="dark" type="submit" style={{ width: '100%' }}>Crear reserva</Button>
                         </Form>
-
-                        {
-                            <DateRangePicker
-
-                                startDate={startDate} // momentPropTypes.momentObj or null,
-                                startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                                endDate={endDate} // momentPropTypes.momentObj or null,
-                                endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                                onDatesChange={({ startDate, endDate }) => handleInputChange(startDate, endDate)}
-
-
-                                // PropTypes.func.isRequired,
-                                focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                                onFocusChange={focusedInput => setFocusedInput(focusedInput)} // PropTypes.func.isRequired,
-                                isDayBlocked={isBlocked}
-                                isOutsideRange={isOutsideRange}
-                            />
-                        }
-
-                        <MyNextBookingsInThisHouse houseId={houseId} moment={moment} />
 
                     </>
 
