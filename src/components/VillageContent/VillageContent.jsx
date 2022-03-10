@@ -45,17 +45,17 @@ const VillageContent = () => {
     const getVillageDetails = () => {
 
         if (user.name) {
-            if (user._id !== village_id) {
+            if (village_id) {
                 villagesService
-                    .getOneVillage(village_id) // es necesario para este servicio pasar el id desde aquí, y no del payload
+                    .getOneVillage(village_id)
                     .then(({ data }) => {
                         setVillageDetails(data)
                         setIsLoaded(true)
                     })
                     .catch(err => console.log(err))
-            } else {
+            } else if (!village_id) {
                 villagesService
-                    .getOneVillage(user._id) // es necesario para este servicio pasar el id desde aquí, y no del payload
+                    .getOneVillage(user?._id)
                     .then(({ data }) => {
                         setVillageDetails(data)
                         setIsLoaded(true)
@@ -65,7 +65,7 @@ const VillageContent = () => {
 
         } else {
             villagesService
-                .getOneVillage(village_id) // es necesario para este servicio pasar el id desde aquí, y no del payload
+                .getOneVillage(village_id)
                 .then(({ data }) => {
                     setVillageDetails(data)
                     setIsLoaded(true)
@@ -115,7 +115,7 @@ const VillageContent = () => {
     }
 
     const checkifMine = () => {
-        user.name && setIsMine(true)
+        !village_id && setIsMine(true)
     }
 
     useEffect(() => {

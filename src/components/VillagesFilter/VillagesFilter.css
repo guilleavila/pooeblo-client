@@ -100,3 +100,14 @@
 .villageItem:hover {
     background-color: lightgray;
 }
+
+.searchBar{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.searchOnly{
+    display: flex;
+    justify-content: center;
+}
