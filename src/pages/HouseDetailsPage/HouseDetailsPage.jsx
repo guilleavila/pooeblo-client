@@ -195,7 +195,6 @@ const HouseDetailsPage = () => {
                 <Col sm={{ span: 4, offset: 1 }}>
                     {isSuscriber ? (bookingsLoaded && <Bookings houseId={house_id} bookings={bookings} refreshBookings={getBookings} refreshDetails={getHouseDetails} />) : <NewSubscriptionForm {...houseDetails} />}
                     <MyNextBookingsInThisHouse houseId={house_id} moment={moment} />
-                    {isMine && <AllRentersBookingsInThisHouse houseId={house_id} moment={moment} />}
                 </Col>
             </Row>
 
@@ -204,6 +203,12 @@ const HouseDetailsPage = () => {
                     <Col>
                         <Button className="myBtn" onClick={handleEditBtn}>Editar información</Button>
                     </Col>}
+            </Row>
+
+            <Row>
+                <Col>
+                    {isMine && <AllRentersBookingsInThisHouse houseId={house_id} moment={moment} />}
+                </Col>
             </Row>
 
             <Modal show={showModal} onHide={handleSaveBtn} size="lg">

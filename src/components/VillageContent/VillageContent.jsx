@@ -12,6 +12,7 @@ import FollowBtn from "../FollowBtn/FollowBtn"
 import userService from "../../services/user.service"
 import postsService from "../../services/posts.service"
 import PostsList from "../PostsList/PostsList"
+import NewPostForm from "../../components/NewPostForm/NewPostForm"
 
 
 const VillageContent = () => {
@@ -198,76 +199,73 @@ const VillageContent = () => {
 
     return (
 
-        <section className='villageProfile'>
+        <Container>
+            <div className="hero">
+                <img className='bgImg' src={villageDetails?.profileImg} alt="profile"></img>
+            </div>
 
-            <Container>
-                <div className="btnContainer">
-                    <img className='villageImg' src={villageDetails?.profileImg} alt="profile"></img>
-                </div>
-                <Row>
-                    <Col className='firstLine'>
-                        <div className="profileBtns">
-                            <h1>{villageDetails?.name}</h1>
-                            {isMine &&
-                                <div className="editProfileBtns">
-                                    <Button className='editImgBtn myBtn' onClick={handleEditImgBtn}>Editar imagen</Button>
-                                    <Button className='editProfileBtn myBtn' onClick={handleEditBtn}>Editar perfil</Button>
-                                </div>}
-                        </div>
-                        {!houses ? <p>Actualmente no hay casas disponibles</p> : <p>¡Enhorabuena!, hay casas disponibles.</p>}
-                        {/* <h3>{villageDetails?.province}, {villageDetails?.CCAA}</h3>
-                        {!isMine && <FollowBtn btnState={btnState} handleFollowBtn={handleFollowBtn} />} */}
-                        {/* {isLoaded && <h3>{villageDetails?.features.distanceToCity}, {villageDetails?.CCAA}</h3>} */}
-                    </Col>
-                    <h5>{villageDetails?.province}, {villageDetails?.CCAA}</h5>
-                    <p>{villageDetails?.description}</p>
-                </Row>
-
-                <Row>
-                    <div className="features">
-                        <p>FEATURES</p>
+            <Row>
+                <Col sm={12} className='firstLine'>
+                    <div className="profileBtns">
+                        <h1>{villageDetails?.name}</h1>
+                        {isMine &&
+                            <div className="editProfileBtns">
+                                <Button className='editImgBtn myBtn' onClick={handleEditImgBtn}>Editar imagen</Button>
+                                <Button className='editProfileBtn myBtn' onClick={handleEditBtn}>Editar perfil</Button>
+                            </div>}
                     </div>
-                </Row>
+                    {/* {!houses ? <p>Actualmente no hay casas disponibles</p> : <p>¡Enhorabuena!, hay casas disponibles.</p>} */}
+                    <h2>{villageDetails?.name}</h2>
+                    <h3>{villageDetails?.province}, {villageDetails?.CCAA}</h3>
+                    {/* {!isMine && <FollowBtn btnState={btnState} handleFollowBtn={handleFollowBtn} />} */}
+                </Col>
+                <Col sm={9}>
+                    <p>{villageDetails?.description}</p>
+                </Col>
+            </Row>
 
-                {/* {isLoaded && <VillageFeatures {...villageDetails} />} */}
+            <Row>
+                <Col>
+                    {isLoaded && <VillageFeatures {...villageDetails} />}
+                </Col>
+            </Row>
 
-                {/* <h2>Casas de {villageDetails?.name}</h2> */}
-                <Row>
-                    {/* {housesLoaded && < ResultsHouses houses={houses} width={3} />} */}
-                </Row>
+            <h2>Casas de {villageDetails?.name}</h2>
+            <Row>
+                {housesLoaded && < ResultsHouses houses={houses} width={3} />}
+            </Row>
 
-                {/* <Link to={`/pueblos/${villageDetails?._id}/casas`}>
-                    <Button>VER TODAS LAS CASAS</Button>
-                </Link> */}
+            <Link to={`/pueblos/${villageDetails?._id}/casas`}>
+                <Button>VER TODAS LAS CASAS</Button>
+            </Link>
 
-                {/* <h1>TODOS MIS POSTS</h1>
-                <PostsList posts={posts} />
-
-                 */}
-                {/* <NewPostForm refreshContent={getVillageDetails} /> */}
+            <h1>TODOS MIS POSTS</h1>
+            <PostsList posts={posts} />
 
 
+            <NewPostForm refreshContent={getVillageDetails} />
 
-                <Modal show={showModal} onHide={handleSaveBtn} size="lg">
-                    <Modal.Header closeButton>
-                        <Modal.Title>Editar perfil</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        {isLoaded && <VillageFeaturesForm {...villageDetails} closeModal={handleSaveBtn} refreshDetails={getVillageDetails} />}
-                    </Modal.Body>
-                </Modal>
 
-                <Modal show={showImageModal} onHide={handleSaveImageBtn} size="lg">
-                    <Modal.Header closeButton>
-                        <Modal.Title>Subir imagen</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        {isLoaded && <VillageImageForm closeModal={handleSaveImageBtn} refreshDetails={getVillageDetails} />}
-                    </Modal.Body>
-                </Modal>
 
-            </Container>
-        </section>
+            <Modal show={showModal} onHide={handleSaveBtn} size="lg">
+                <Modal.Header closeButton>
+                    <Modal.Title>Editar perfil</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {isLoaded && <VillageFeaturesForm {...villageDetails} closeModal={handleSaveBtn} refreshDetails={getVillageDetails} />}
+                </Modal.Body>
+            </Modal>
+
+            <Modal show={showImageModal} onHide={handleSaveImageBtn} size="lg">
+                <Modal.Header closeButton>
+                    <Modal.Title>Subir imagen</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {isLoaded && <VillageImageForm closeModal={handleSaveImageBtn} refreshDetails={getVillageDetails} />}
+                </Modal.Body>
+            </Modal>
+
+        </Container>
 
     )
 }

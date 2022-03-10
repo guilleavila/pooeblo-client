@@ -51,7 +51,7 @@ const HomePage = () => {
                     <Container className="secondSectionFlex">
                         <h2 className="h2Weight">Descubre pueblos</h2>
                         <h3 className="h3Weight">con todo lo que necesitas</h3>
-                        <div class="villagesSubSection">
+                        <div className="villagesSubSection">
                             <Row>
                                 <MyFollowedVillages followedVillages={villages} size={4} />
                             </Row>

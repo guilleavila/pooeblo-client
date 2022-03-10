@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
-import { Button } from "react-bootstrap"
+import { Button, Row, Col } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import bookingsService from "../../services/bookings.service"
 import housesService from "../../services/houses.service"
+import './MyNextBookingsInThisHouse.css'
 
 const MyNextBookingsInThisHouse = ({ houseId, moment }) => {
 
@@ -41,19 +42,22 @@ const MyNextBookingsInThisHouse = ({ houseId, moment }) => {
 
 
     return (
-        <article>
-            <h5>Mis próximas reservas en {houseDetails?.name}</h5>
+        <Row>
+            <h5 className="h5Bookings">Mis próximas reservas en {houseDetails?.name}</h5>
             {
                 upcomingBookings.map(booking => {
-                    return <div key={booking._id}>
-                        <h6>RESERVA</h6>
-                        <p>Entrada: {moment(booking.entryDate).format('LL')}</p>
-                        <p>Salida: {moment(booking.exitDate).format('LL')}</p>
-                        <Button onClick={() => handleCancelBtn(booking._id)}>Cancelar Reserva</Button>
-                    </div>
+                    return (
+                        <Col sm={6}>
+                            <div className="dateDiv" key={booking._id}>
+                                <p className="date">Entrada: {moment(booking.entryDate).format('L')}</p>
+                                <p className="date">Salida: {moment(booking.exitDate).format('L')}</p>
+                                <Button className='myBtn' onClick={() => handleCancelBtn(booking._id)}>Cancelar Reserva</Button>
+                            </div>
+                        </Col>
+                    )
                 })
             }
-        </article>
+        </Row>
     )
 }
 

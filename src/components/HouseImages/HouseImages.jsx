@@ -143,8 +143,10 @@ const HouseImages = ({ _id, isMine, updataeImagesState, houseImages, getHouseDet
                 (houseImages.length === 5) &&
                 <Row>
                     <Col sm={6}>
-                        <Button className={showBtn} onClick={() => handleDeleteBtn(houseImages[0])}>Eliminar</Button>
-                        <img className="bigHouseImg" src={houseImages[0]} alt="house" />
+                        <div className="imgContainer">
+                            <Button className='remove' className={showBtn} onClick={() => handleDeleteBtn(houseImages[0])}>Eliminar</Button>
+                            <img className="bigHouseImg" src={houseImages[0]} alt="house" />
+                        </div>
                     </Col>
 
                     <Col sm={6}>
