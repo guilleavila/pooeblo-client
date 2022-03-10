@@ -8,6 +8,7 @@ import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'rea
 import Moment, { localeData } from 'moment';
 import { extendMoment } from 'moment-range'
 import { END_DATE } from 'react-dates/constants';
+// import styled from "styled-components"
 import MyNextBookingsInThisHouse from "../MyNextBookingsInThisHouse/MyNextBookingsInThisHouse"
 import './Bookings.css'
 
@@ -84,8 +85,8 @@ const Bookings = ({ houseId, bookings, refreshBookings, refreshDetails }) => {
             .createBooking(bookingState)
             .then(() => {
                 getSubscriptions()
-                refreshDetails()
                 refreshBookings()
+                refreshDetails()
             })
             .catch(err => console.log(err))
     }
@@ -94,6 +95,8 @@ const Bookings = ({ houseId, bookings, refreshBookings, refreshDetails }) => {
     const isOutsideRange = day => (
         focusedInput === END_DATE && (day.isBefore(startDate) || day.isAfter(startDate.clone().add(maximumDays, 'days')))
     );
+
+
 
 
     return (
@@ -122,6 +125,7 @@ const Bookings = ({ houseId, bookings, refreshBookings, refreshDetails }) => {
                                     isDayBlocked={isBlocked}
                                     isOutsideRange={isOutsideRange}
                                 />
+
                             }
                         </div>
 

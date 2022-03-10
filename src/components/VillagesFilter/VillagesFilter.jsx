@@ -73,7 +73,7 @@ const VillagesFilter = () => {
 
                 {
                     filteredVillagesByName.length !== 0 && (
-                        <div className='villagesResult'>
+                        <div className='villagesResultByName'>
                             {
                                 filteredVillagesByName.map(village => {
                                     return <Link key={village._id} to={`/pueblos/${village._id}`}>
@@ -85,7 +85,7 @@ const VillagesFilter = () => {
                 }
                 {
                     provinces.length !== 0 && (
-                        <div className='villagesResult'>
+                        <div className='villagesResultByProvince'>
                             {
                                 provinces.map(province => {
                                     return <Link key={province} to={`/pueblos/resultados/${province}`}>

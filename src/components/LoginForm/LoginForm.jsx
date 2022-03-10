@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import authService from "../../services/auth.service"
 import { AuthContext } from "../../context/auth.context"
-// import { MessageContext } from "../../context/userMessage.context"
+import { MessageContext } from "../../context/userMessage.context"
 
 const LoginForm = ({ closeModal }) => {
 
@@ -15,7 +15,7 @@ const LoginForm = ({ closeModal }) => {
     const navigate = useNavigate()
 
     const { storeToken, authenticateUser } = useContext(AuthContext)
-    // const { setShowMessage, setMessageInfo } = useContext(MessageContext)
+    const { setShowMessage, setMessageInfo } = useContext(MessageContext)
 
     const handleInputChange = e => {
         const { name, value } = e.target
@@ -34,8 +34,8 @@ const LoginForm = ({ closeModal }) => {
             .then(({ data }) => {
                 storeToken(data.authToken)
                 authenticateUser()
-                // setShowMessage(true)
-                // setMessageInfo({ title: 'Éxito', desc: 'Sesión iniciada correctamente' })
+                setShowMessage(true)
+                setMessageInfo({ title: 'Éxito', desc: 'Sesión iniciada correctamente' })
                 closeModal()
             })
             .catch(err => console.log(err))
