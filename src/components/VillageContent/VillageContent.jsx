@@ -198,36 +198,49 @@ const VillageContent = () => {
 
     return (
 
-        <>
-            <img className='villageImg' src={villageDetails?.profileImg} alt="profile"></img>
-            {isMine && <Button onClick={handleEditImgBtn}>Editar imagen</Button>}
+        <section className='villageProfile'>
+
             <Container>
+                <div className="btnContainer">
+                    <img className='villageImg' src={villageDetails?.profileImg} alt="profile"></img>
+                </div>
                 <Row>
-                    <Col>
-                        <h1>{villageDetails?.name}</h1>
-                        <h3>{villageDetails?.province}, {villageDetails?.CCAA}</h3>
-                        {!isMine && <FollowBtn btnState={btnState} handleFollowBtn={handleFollowBtn} />}
+                    <Col className='firstLine'>
+                        <div className="profileBtns">
+                            <h1>{villageDetails?.name}</h1>
+                            {isMine &&
+                                <div className="editProfileBtns">
+                                    <Button className='editImgBtn myBtn' onClick={handleEditImgBtn}>Editar imagen</Button>
+                                    <Button className='editProfileBtn myBtn' onClick={handleEditBtn}>Editar perfil</Button>
+                                </div>}
+                        </div>
+                        {!houses ? <p>Actualmente no hay casas disponibles</p> : <p>¡Enhorabuena!, hay casas disponibles.</p>}
+                        {/* <h3>{villageDetails?.province}, {villageDetails?.CCAA}</h3>
+                        {!isMine && <FollowBtn btnState={btnState} handleFollowBtn={handleFollowBtn} />} */}
                         {/* {isLoaded && <h3>{villageDetails?.features.distanceToCity}, {villageDetails?.CCAA}</h3>} */}
                     </Col>
+                    <h5>{villageDetails?.province}, {villageDetails?.CCAA}</h5>
                 </Row>
 
-                {isLoaded && <VillageFeatures {...villageDetails} />}
-
-                <h2>Casas de {villageDetails?.name}</h2>
                 <Row>
-                    {housesLoaded && < ResultsHouses houses={houses} width={3} />}
+
                 </Row>
 
-                <Link to={`/pueblos/${villageDetails?._id}/casas`}>
-                    <Button>VER TODAS LAS CASAS</Button>
-                </Link>
+                {/* {isLoaded && <VillageFeatures {...villageDetails} />} */}
 
-                <h1>TODOS MIS POSTS</h1>
+                {/* <h2>Casas de {villageDetails?.name}</h2> */}
+                <Row>
+                    {/* {housesLoaded && < ResultsHouses houses={houses} width={3} />} */}
+                </Row>
+
+                {/* <Link to={`/pueblos/${villageDetails?._id}/casas`}>
+                    <Button>VER TODAS LAS CASAS</Button>
+                </Link> */}
+
+                {/* <h1>TODOS MIS POSTS</h1>
                 <PostsList posts={posts} />
 
-                {isMine && <Row>
-                    <Button onClick={handleEditBtn}>Editar perfil</Button>
-                </Row>}
+                 */}
                 {/* <NewPostForm refreshContent={getVillageDetails} /> */}
 
 
@@ -251,7 +264,7 @@ const VillageContent = () => {
                 </Modal>
 
             </Container>
-        </>
+        </section>
 
     )
 }
