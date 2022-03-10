@@ -45,7 +45,7 @@ const VillageContent = () => {
     const getVillageDetails = () => {
 
         if (user.name) {
-            if (user._id !== village_id) {
+            if (village_id) {
                 villagesService
                     .getOneVillage(village_id) // es necesario para este servicio pasar el id desde aquí, y no del payload
                     .then(({ data }) => {
@@ -53,7 +53,7 @@ const VillageContent = () => {
                         setIsLoaded(true)
                     })
                     .catch(err => console.log(err))
-            } else {
+            } else if (!village_id) {
                 villagesService
                     .getOneVillage(user._id) // es necesario para este servicio pasar el id desde aquí, y no del payload
                     .then(({ data }) => {
@@ -76,13 +76,24 @@ const VillageContent = () => {
 
     const getHouses = () => {
         if (user.name) {
-            villagesService
-                .getAllHousesOfOneVillage(user._id) // tb necesario
-                .then(({ data }) => {
-                    setHouses(data)
-                    setHousesLoaded(true)
-                })
-                .catch(err => console.log(err))
+            if (village_id) {
+                villagesService
+                    .getAllHousesOfOneVillage(village_id) // tb necesario
+                    .then(({ data }) => {
+                        setHouses(data)
+                        setHousesLoaded(true)
+                    })
+                    .catch(err => console.log(err))
+            } else if (!village_id) {
+                villagesService
+                    .getAllHousesOfOneVillage(user._id) // tb necesario
+                    .then(({ data }) => {
+                        setHouses(data)
+                        setHousesLoaded(true)
+                    })
+                    .catch(err => console.log(err))
+            }
+
         } else {
             villagesService
                 .getAllHousesOfOneVillage(village_id) // tb necesario
@@ -96,13 +107,24 @@ const VillageContent = () => {
 
     const getAllMyPosts = () => {
         if (user.name) {
-            postsService
-                .getAllPostOfOneVillage(user._id)
-                .then(({ data }) => {
-                    console.log(data)
-                    setPosts(data)
-                })
-                .catch(err => console.log(err))
+            if (village_id) {
+                postsService
+                    .getAllPostOfOneVillage(village_id)
+                    .then(({ data }) => {
+                        console.log(data)
+                        setPosts(data)
+                    })
+                    .catch(err => console.log(err))
+            } else if (!village_id) {
+                postsService
+                    .getAllPostOfOneVillage(user._id)
+                    .then(({ data }) => {
+                        console.log(data)
+                        setPosts(data)
+                    })
+                    .catch(err => console.log(err))
+            }
+
         } else {
             postsService
                 .getAllPostOfOneVillage(village_id)
@@ -115,7 +137,7 @@ const VillageContent = () => {
     }
 
     const checkifMine = () => {
-        user.name && setIsMine(true)
+        !village_id && setIsMine(true)
     }
 
     useEffect(() => {
