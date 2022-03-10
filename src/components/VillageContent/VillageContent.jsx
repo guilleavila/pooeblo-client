@@ -33,6 +33,7 @@ const VillageContent = () => {
 
     const [showModal, setShowModal] = useState(false)
     const [showImageModal, setShowImageModal] = useState(false)
+    const [showPostModal, setShowPostModal] = useState(false)
 
     const [isMine, setIsMine] = useState(false)
 
@@ -45,7 +46,7 @@ const VillageContent = () => {
 
     const getVillageDetails = () => {
 
-        if (user.name) {
+        if (user?.name) {
             if (village_id) {
                 villagesService
                     .getOneVillage(village_id)
@@ -76,7 +77,7 @@ const VillageContent = () => {
     }
 
     const getHouses = () => {
-        if (user.name) {
+        if (user?.name) {
             if (village_id) {
                 villagesService
                     .getAllHousesOfOneVillage(village_id) // tb necesario
@@ -107,7 +108,7 @@ const VillageContent = () => {
     }
 
     const getAllMyPosts = () => {
-        if (user.name) {
+        if (user?.name) {
             if (village_id) {
                 postsService
                     .getAllPostOfOneVillage(village_id)
@@ -196,31 +197,42 @@ const VillageContent = () => {
     const handleEditImgBtn = () => setShowImageModal(true)
     const handleSaveImageBtn = () => setShowImageModal(false)
 
+    const handleNewPostBtn = () => setShowPostModal(true)
+    const handleSavePostBtn = () => setShowPostModal(false)
+
 
     return (
 
         <Container>
-            <div className="hero">
-                <img className='bgImg' src={villageDetails?.profileImg} alt="profile"></img>
+            <div className="villageHero">
+                <img className='villageImg' src={villageDetails?.profileImg} alt="profile"></img>
             </div>
 
             <Row>
-                <Col sm={12} className='firstLine'>
+                <Col sm={12} className='villageIntro'>
                     <div className="profileBtns">
-                        <h1>{villageDetails?.name}</h1>
+                        <Row className="followSection">
+                            <Col md={7}>
+                                <h1 className="h1house">{villageDetails?.name}</h1>
+                            </Col>
+                            {!isMine &&
+                                <Col md={5}>
+                                    <FollowBtn btnState={btnState} handleFollowBtn={handleFollowBtn} />
+                                </Col>
+                            }
+                        </Row>
+
                         {isMine &&
                             <div className="editProfileBtns">
-                                <Button className='editImgBtn myBtn' onClick={handleEditImgBtn}>Editar imagen</Button>
-                                <Button className='editProfileBtn myBtn' onClick={handleEditBtn}>Editar perfil</Button>
+                                <Button className='editImgBtn villageBtn' onClick={handleEditImgBtn}>Editar imagen</Button>
+                                <Button className='villageBtn' onClick={handleEditBtn}>Editar perfil</Button>
                             </div>}
                     </div>
                     {/* {!houses ? <p>Actualmente no hay casas disponibles</p> : <p>¡Enhorabuena!, hay casas disponibles.</p>} */}
-                    <h2>{villageDetails?.name}</h2>
-                    <h3>{villageDetails?.province}, {villageDetails?.CCAA}</h3>
-                    {/* {!isMine && <FollowBtn btnState={btnState} handleFollowBtn={handleFollowBtn} />} */}
+                    <h3 className="h3Weight">{villageDetails?.province}, {villageDetails?.CCAA}</h3>
                 </Col>
                 <Col sm={9}>
-                    <p>{villageDetails?.description}</p>
+                    <p className='villageDescription'>{villageDetails?.description}</p>
                 </Col>
             </Row>
 
@@ -230,21 +242,32 @@ const VillageContent = () => {
                 </Col>
             </Row>
 
-            <h2>Casas de {villageDetails?.name}</h2>
             <Row>
+                <h2 className="section-title">Casas de {villageDetails?.name}</h2>
                 {housesLoaded && < ResultsHouses houses={houses} width={3} />}
             </Row>
 
-            <Link to={`/pueblos/${villageDetails?._id}/casas`}>
-                <Button>VER TODAS LAS CASAS</Button>
-            </Link>
 
-            <h1>TODOS MIS POSTS</h1>
-            <PostsList posts={posts} />
+            <Row>
+                <Col className='allHousesBtn'>
+                    <Link to={`/pueblos/${villageDetails?._id}/casas`}>
+                        <Button className="myBtn newHouseBtn">Ver todas las casas</Button>
+                    </Link>
+                </Col>
+            </Row>
 
+            <Row>
+                <Col>
+                    <h2 className="section-title">Posts</h2>
+                    <PostsList posts={posts} />
+                </Col>
+            </Row>
 
-            <NewPostForm refreshContent={getVillageDetails} />
-
+            <Row>
+                <Col className='allHousesBtn'>
+                    <Button onClick={handleNewPostBtn} className="myBtn newHouseBtn">Crear post</Button>
+                </Col>
+            </Row>
 
 
             <Modal show={showModal} onHide={handleSaveBtn} size="lg">
@@ -262,6 +285,15 @@ const VillageContent = () => {
                 </Modal.Header>
                 <Modal.Body>
                     {isLoaded && <VillageImageForm closeModal={handleSaveImageBtn} refreshDetails={getVillageDetails} />}
+                </Modal.Body>
+            </Modal>
+
+            <Modal show={showPostModal} onHide={handleSavePostBtn} size="lg">
+                <Modal.Header closeButton>
+                    <Modal.Title>Nuevo post</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {isLoaded && <NewPostForm closeModal={handleSavePostBtn} refreshContent={getAllMyPosts} />}
                 </Modal.Body>
             </Modal>
 

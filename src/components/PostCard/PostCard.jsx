@@ -19,7 +19,7 @@ const PostCard = ({ _id, image, content, creator, createdAt }) => {
 
 
     return (
-        <Card className='postCard' style={{ width: '20rem' }}>
+        <Card className='postCard'>
             <Link to={`/pueblos/${creator._id}`}>
                 <Card.Img variant="top" src={image} />
                 <Card.Body>

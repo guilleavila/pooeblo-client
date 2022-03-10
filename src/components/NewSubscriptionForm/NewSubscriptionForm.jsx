@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import housesService from "../../services/houses.service"
 import subscriptionsService from "../../services/subscriptions.service"
+import './NewSubscriptionForm.css'
 
 const NewSubscriptionForm = ({ priceDay }) => {
 
@@ -36,14 +37,17 @@ const NewSubscriptionForm = ({ priceDay }) => {
     }
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <Form.Label>Días de subscripción</Form.Label>
+        <div className="newForm">
+            <h3>Suscríbete</h3>
 
-            <Form.Control type="text" name="totalDays" value={subscriptionState.totalDays} onChange={handleInputChange} />
-            <p>Precio de la casa por día: {priceDay}</p>
-            <p>Precio total: {priceDay * subscriptionState.totalDays}</p>
-            <Button variant="dark" type="submit" style={{ width: '100%' }}>Crear subscripción</Button>
-        </Form>
+            <Form onSubmit={handleSubmit}>
+                <Form.Label>Días de suscripción</Form.Label>
+                <Form.Control type="text" name="totalDays" value={subscriptionState.totalDays} onChange={handleInputChange} />
+                <p className="grayText">Precio de la casa por día: {priceDay} €/día</p>
+                <p className="grayText">Precio total: <span className="remarkable">{priceDay * subscriptionState.totalDays} €</span></p>
+                <Button className="myBtn" type="submit" style={{ width: '100%' }}>Crear subscripción</Button>
+            </Form>
+        </div>
     )
 
 }

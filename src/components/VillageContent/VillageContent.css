@@ -1,0 +1,64 @@
+.villageHero{
+    position: relative;
+    top: 100px;
+}
+
+.villageImg{
+    width: 100%;
+    height: 630px;
+    object-fit: cover;
+    border-radius: 25px;
+    box-shadow: 0px 12px 29px -3px rgba(0, 0, 0, 0.15);
+}
+
+.villageIntro{
+    margin-top: 130px;
+}
+
+.profileBtns{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.villageDescription{
+    margin: 20px 0px 50px 0px;
+}
+
+.editImgBtn{
+    margin-right: 20px;
+}
+
+.villageBtn{
+    border-radius: 50px;
+    border-color: #f9a77a;
+    color: #f9a77a;
+    background-color: #fff;
+}
+
+.villageBtn:hover{
+    color: white;
+    border-color: #f9a77a;
+    border-color: #f9a77a;
+    background-color: #f9a77a;
+}
+
+.villageBtn:focus{
+    box-shadow: none !important;
+    border-color: #f9a77a;
+    outline: none !important;
+    background-color: #f9a77a;
+}
+
+.allHousesBtn{
+    margin: 20px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.followSection{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

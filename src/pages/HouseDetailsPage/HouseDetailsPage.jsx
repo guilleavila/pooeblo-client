@@ -194,7 +194,7 @@ const HouseDetailsPage = () => {
                 </Col>
                 <Col sm={{ span: 4, offset: 1 }}>
                     {isSuscriber ? (bookingsLoaded && <Bookings houseId={house_id} bookings={bookings} refreshBookings={getBookings} refreshDetails={getHouseDetails} />) : <NewSubscriptionForm {...houseDetails} />}
-                    <MyNextBookingsInThisHouse houseId={house_id} moment={moment} />
+                    {isSuscriber && <MyNextBookingsInThisHouse houseId={house_id} moment={moment} />}
                 </Col>
             </Row>
 

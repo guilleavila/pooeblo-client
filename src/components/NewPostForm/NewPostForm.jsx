@@ -6,7 +6,7 @@ import uploadOneService from "../../services/uploadOne.service"
 import { useState, useContext } from "react"
 
 
-const NewPostForm = ({ refreshContent }) => {
+const NewPostForm = ({ refreshContent, closeModal }) => {
 
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
@@ -53,6 +53,7 @@ const NewPostForm = ({ refreshContent }) => {
             .then(() => {
                 setPostState({ image: '', content: '' })
                 refreshContent()
+                closeModal()
             })
             .catch(err => console.log(err))
     }

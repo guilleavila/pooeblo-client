@@ -4,7 +4,7 @@ import './FollowBtn.css'
 const FollowBtn = ({ btnState, handleFollowBtn }) => {
 
     return (
-        <Button className='followBtn' variant="dark" onClick={handleFollowBtn}>{btnState}</Button>
+        <Button className='myBtn' onClick={handleFollowBtn}>{btnState}</Button>
 
     )
 }

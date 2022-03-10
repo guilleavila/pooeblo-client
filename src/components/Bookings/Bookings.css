@@ -1,4 +1,4 @@
-.newBooking{
+.newForm{
     border-radius: 15px;
     padding: 30px;
     box-shadow: 0px 12px 29px -3px rgba(0, 0, 0, 0.05);  
@@ -15,6 +15,6 @@
     border: 0px;
 }
 
-.daysLeft{
+.grayText{
     color: rgba(0, 0, 0, 0.5);
 }

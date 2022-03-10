@@ -1,6 +1,7 @@
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Arrow from '../../public/flechablanca.svg'
+import DefaultImg from '../../public/default.svg'
 
 import './HouseCard.css'
 
@@ -11,7 +12,7 @@ const HouseCard = ({ name, images, _id, village }) => {
         <Card className='houseCard'>
             <Link to={`/casa/${_id}`}>
                 <div className='myContainer'>
-                    <Card.Img className="houseCardImg" variant="top" src={images[0]} />
+                    {images[0] ? <Card.Img className="houseCardImg" variant="top" src={images[0]} /> : <Card.Img className="houseCardImg" variant="top" src={DefaultImg} />}
                     <img className='overlayImg' src={Arrow}></img>
                 </div>
 

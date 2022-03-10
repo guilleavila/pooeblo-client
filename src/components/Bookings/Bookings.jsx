@@ -100,13 +100,13 @@ const Bookings = ({ houseId, bookings, refreshBookings, refreshDetails }) => {
 
 
     return (
-        <article className="newBooking">
+        <article className="newForm">
             {
                 daysLeftToBook <= 0 ? <p>Has agotado tus días</p> :
 
                     <>
                         <h3>Haz una reserva</h3>
-                        <p className="daysLeft">Te quedan {daysLeftToBook} días disponibles para reservar en esta casa</p>
+                        <p className="grayText">Te quedan {daysLeftToBook} días disponibles para reservar en esta casa</p>
 
                         <div className="datePickerDiv">
                             {

@@ -3,6 +3,7 @@ import { useState } from "react"
 import { Container, Row, Col, Button, Modal } from "react-bootstrap"
 import housesService from "../../services/houses.service"
 import HouseImagesForm from "../HouseImagesForm/HouseImagesForm"
+import DefaultImg from '../../public/default.svg'
 import './HouseImages.css'
 
 
@@ -55,7 +56,7 @@ const HouseImages = ({ _id, isMine, updataeImagesState, houseImages, getHouseDet
                 (houseImages.length === 0) &&
                 <Row>
                     <Col sm={12}>
-                        <img className="bigHouseImg" src="https://img.freepik.com/vector-gratis/casa-gris-paredes-ruinas_1308-73951.jpg?w=1480" alt="default" />
+                        <img className="bigHouseImg" src={DefaultImg} alt="default" />
                     </Col>
                 </Row>
             }
