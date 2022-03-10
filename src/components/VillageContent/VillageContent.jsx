@@ -76,13 +76,24 @@ const VillageContent = () => {
 
     const getHouses = () => {
         if (user.name) {
-            villagesService
-                .getAllHousesOfOneVillage(user._id) // tb necesario
-                .then(({ data }) => {
-                    setHouses(data)
-                    setHousesLoaded(true)
-                })
-                .catch(err => console.log(err))
+            if (village_id) {
+                villagesService
+                    .getAllHousesOfOneVillage(village_id) // tb necesario
+                    .then(({ data }) => {
+                        setHouses(data)
+                        setHousesLoaded(true)
+                    })
+                    .catch(err => console.log(err))
+            } else if (!village_id) {
+                villagesService
+                    .getAllHousesOfOneVillage(user._id) // tb necesario
+                    .then(({ data }) => {
+                        setHouses(data)
+                        setHousesLoaded(true)
+                    })
+                    .catch(err => console.log(err))
+            }
+
         } else {
             villagesService
                 .getAllHousesOfOneVillage(village_id) // tb necesario
@@ -96,13 +107,24 @@ const VillageContent = () => {
 
     const getAllMyPosts = () => {
         if (user.name) {
-            postsService
-                .getAllPostOfOneVillage(user._id)
-                .then(({ data }) => {
-                    console.log(data)
-                    setPosts(data)
-                })
-                .catch(err => console.log(err))
+            if (village_id) {
+                postsService
+                    .getAllPostOfOneVillage(village_id)
+                    .then(({ data }) => {
+                        console.log(data)
+                        setPosts(data)
+                    })
+                    .catch(err => console.log(err))
+            } else if (!village_id) {
+                postsService
+                    .getAllPostOfOneVillage(user._id)
+                    .then(({ data }) => {
+                        console.log(data)
+                        setPosts(data)
+                    })
+                    .catch(err => console.log(err))
+            }
+
         } else {
             postsService
                 .getAllPostOfOneVillage(village_id)
