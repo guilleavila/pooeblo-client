@@ -220,10 +220,13 @@ const VillageContent = () => {
                         {/* {isLoaded && <h3>{villageDetails?.features.distanceToCity}, {villageDetails?.CCAA}</h3>} */}
                     </Col>
                     <h5>{villageDetails?.province}, {villageDetails?.CCAA}</h5>
+                    <p>{villageDetails?.description}</p>
                 </Row>
 
                 <Row>
-
+                    <div className="features">
+                        <p>FEATURES</p>
+                    </div>
                 </Row>
 
                 {/* {isLoaded && <VillageFeatures {...villageDetails} />} */}

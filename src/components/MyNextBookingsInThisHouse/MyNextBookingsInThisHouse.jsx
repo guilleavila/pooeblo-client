@@ -33,9 +33,12 @@ const MyNextBookingsInThisHouse = ({ houseId, moment }) => {
     const handleCancelBtn = bookingId => {
         bookingsService
             .deleteBooking(bookingId)
-            .then(() => navigate('/perfil'))
+            .then(() => {
+                getBookings()
+            })
             .catch(err => console.log(err))
     }
+
 
     return (
         <article>
