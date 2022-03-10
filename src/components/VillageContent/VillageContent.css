@@ -17,7 +17,6 @@ position:relative;
     top: 120px;
 }
 
-
 .firstLine {
     margin-top: 25px;
     display: flex;
@@ -51,4 +50,8 @@ position:relative;
 
 .profileBtns {
     display: flex;
+}
+
+.features {
+    background-color: #98a08f;
 }

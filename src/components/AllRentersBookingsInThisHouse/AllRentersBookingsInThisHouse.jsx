@@ -24,7 +24,9 @@ const AllRentersBookingsInThisHouse = ({ houseId, moment }) => {
     const handleCancelBtn = bookingId => {
         bookingsService
             .deleteBooking(bookingId)
-            .then(() => navigate('/perfil'))
+            .then(() => {
+                getAllRentersBookings()
+            })
             .catch(err => console.log(err))
     }
 
