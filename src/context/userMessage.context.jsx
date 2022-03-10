@@ -14,7 +14,4 @@ function MessageProviderWrapper(props) {
     )
 }
 
-export {
-    MessageContext,
-    MessageProviderWrapper
-};
+export { MessageContext, MessageProviderWrapper };

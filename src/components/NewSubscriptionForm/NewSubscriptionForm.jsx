@@ -31,7 +31,7 @@ const NewSubscriptionForm = ({ priceDay }) => {
 
         subscriptionsService
             .createSubscription(subscriptionState)
-            .then(() => { navigate(`/perfil`) })
+            .then(() => { navigate(`/pagar`) })
             .catch(err => console.log(err))
     }
 
