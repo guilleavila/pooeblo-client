@@ -29,6 +29,10 @@ class PostsService {
         return this.api.get(`/get-villagge-posts/${villageId}`)
     }
 
+    getAllMyPosts = () => {
+        return this.api.get(`/get-my-posts`)
+    }
+
     getMyFollowedVillagesPosts = () => {
         return this.api.get(`/get-followed-villages-posts`)
     }
