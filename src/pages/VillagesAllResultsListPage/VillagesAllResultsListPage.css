@@ -1,0 +1,21 @@
+.allVillages {
+    padding-top: 0px;
+    position: relative;
+    top: 120px;
+}
+
+.resultsRow {
+    margin: 30px;
+    padding-top: 20px;
+}
+
+.villagesScroll {
+    height: 630px;
+    border-radius: 25px;
+    overflow: hidden; 
+    overflow-y: auto;
+}
+
+.map {
+    margin: 30px;
+}

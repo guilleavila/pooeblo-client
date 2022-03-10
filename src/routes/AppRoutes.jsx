@@ -54,7 +54,7 @@ const AppRoutes = () => {
             {/* <Route path='/nueva-casa' element={<NewHousePage />} /> */}
             <Route path='/casa/:house_id' element={<HouseDetailsPage />} />
             {/* <Route path='/casa/:house_id/editar' element={<HouseEditPage />} /> */}
-            <Route path='/pagar' element={<PaymentPage />} />
+            <Route path='/pagar/:subscription_id' element={<PaymentPage />} />
             <Route path='/feed' element={<PostsFeedPage />} />
 
 
