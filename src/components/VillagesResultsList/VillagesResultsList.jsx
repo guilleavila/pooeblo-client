@@ -7,7 +7,7 @@ const VillagesResultsList = ({ results }) => {
         <Row>
             {
                 results?.map(village => {
-                    return <Col md={4} key={village._id} > <VillageCard {...village} /> </Col>
+                    return <Col md={6} key={village._id} > <VillageCard {...village} /> </Col>
                 })
             }
         </Row>
