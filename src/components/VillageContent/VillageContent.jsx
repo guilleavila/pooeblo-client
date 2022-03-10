@@ -10,6 +10,8 @@ import { Link, useParams } from 'react-router-dom'
 import './VillageContent.css'
 import FollowBtn from "../FollowBtn/FollowBtn"
 import userService from "../../services/user.service"
+import postsService from "../../services/posts.service"
+import PostsList from "../PostsList/PostsList"
 
 
 const VillageContent = () => {
@@ -26,6 +28,8 @@ const VillageContent = () => {
     const [houses, setHouses] = useState([])
     const [housesLoaded, setHousesLoaded] = useState(false)
 
+    const [posts, setPosts] = useState([])
+
     const [showModal, setShowModal] = useState(false)
     const [showImageModal, setShowImageModal] = useState(false)
 
@@ -34,6 +38,7 @@ const VillageContent = () => {
     useEffect(() => {
         getVillageDetails()
         getHouses()
+        getAllMyPosts()
         checkifMine()
     }, [user])
 
@@ -84,6 +89,26 @@ const VillageContent = () => {
                 .then(({ data }) => {
                     setHouses(data)
                     setHousesLoaded(true)
+                })
+                .catch(err => console.log(err))
+        }
+    }
+
+    const getAllMyPosts = () => {
+        if (user.name) {
+            postsService
+                .getAllPostOfOneVillage(user._id)
+                .then(({ data }) => {
+                    console.log(data)
+                    setPosts(data)
+                })
+                .catch(err => console.log(err))
+        } else {
+            postsService
+                .getAllPostOfOneVillage(village_id)
+                .then(({ data }) => {
+                    console.log(data)
+                    setPosts(data)
                 })
                 .catch(err => console.log(err))
         }
@@ -174,6 +199,9 @@ const VillageContent = () => {
                 <Link to={`/pueblos/${villageDetails?._id}/casas`}>
                     <Button>VER TODAS LAS CASAS</Button>
                 </Link>
+
+                <h1>TODOS MIS POSTS</h1>
+                <PostsList posts={posts} />
 
                 {isMine && <Row>
                     <Button onClick={handleEditBtn}>Editar perfil</Button>
