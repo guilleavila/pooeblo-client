@@ -5,7 +5,7 @@
 
 body {
   font-family: 'Raleway', sans-serif;
-  font-weight: 300;
+  font-weight: 300;  
 }
 
 a{
@@ -15,4 +15,8 @@ a{
 
 a:hover{
   color: #f99462;
+}
+
+.userInfo {
+  padding-top: 6rem;
 }

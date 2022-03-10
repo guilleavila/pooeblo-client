@@ -6,6 +6,8 @@ import LoginPage from "../../pages/LoginPage/LoginPage"
 import UserSignupPage from "../../pages/UserSignupPage/UserSignupPage"
 import VillageSignupPage from "../../pages/VillageSignupPage/VillageSignupPage"
 import UserSignupForm from "../UserSignupForm/UserSignupForm"
+import logo from "../../public/logo.svg"
+import './Navigation.css'
 
 const Navigation = () => {
 
@@ -28,10 +30,10 @@ const Navigation = () => {
     }
 
     return (
-        <Navbar bg="dark" variant='dark' expand="lg" style={{ marginBottom: 30 }}>
+        <Navbar className="navbar" expand="lg" style={{ marginBottom: 30 }}>
             <Container>
                 <NavLink to="/">
-                    <Navbar.Brand as="span">POOEBLO</Navbar.Brand>
+                    <Navbar.Brand as="span"><img className="logo" src={logo}></img></Navbar.Brand>
                 </NavLink>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -41,35 +43,35 @@ const Navigation = () => {
                             isLoggedIn ?
                                 <>
                                     <NavLink to="/perfil">
-                                        <Nav.Link as="span">Perfil</Nav.Link>
+                                        <Button className="navBtn" as="span">Perfil</Button>
                                     </NavLink>
                                     {/* <NavLink to="/nueva-casa">
                                         <Nav.Link as="span">Crear casa</Nav.Link>
                                     </NavLink> */}
-                                    <NavLink to="/iniciar-sesion">
-                                        <Nav.Link as="span" onClick={logOutUser}>Cerrar sesión</Nav.Link>
+                                    <NavLink to="/">
+                                        <Button className="navBtn" as="span" onClick={logOutUser}>Cerrar sesión</Button>
                                     </NavLink>
                                 </>
                                 :
                                 <>
-                                    <Modal show={showSignUpModal} onHide={handleSignUpModal} size="lg">
-                                        <Modal.Body>
+                                    <Modal className="my-modal" centered='true' show={showSignUpModal} onHide={handleSignUpModal} size="lg">
+                                        <Modal.Body scrollable='true'>
                                             {signUpForm === 'usuario' && <UserSignupPage closeModal={handleSignUpModal}></UserSignupPage>}
                                             {signUpForm === 'pueblo' && <VillageSignupPage closeModal={handleSignUpModal}></VillageSignupPage>}
                                             <p>¿Eres un {signUpForm}? <Button onClick={changeSignUpForm}>Regístrate aquí</Button></p>
                                         </Modal.Body>
                                     </Modal>
 
-                                    <Button onClick={openSignUpModal}>Regístrate</Button>
+                                    <Button className="navBtn" onClick={openSignUpModal}>Regístrate</Button>
 
 
-                                    <Modal show={showLoginModal} onHide={handleLoginModal} size="lg">
+                                    <Modal show={showLoginModal} centered='true' onHide={handleLoginModal} size="lg">
                                         <Modal.Body>
                                             <LoginPage closeModal={handleLoginModal} ></LoginPage>
                                         </Modal.Body>
                                     </Modal>
 
-                                    <Button onClick={openLoginModal}>Iniciar sesión</Button>
+                                    <Button className="navBtn" onClick={openLoginModal}>Iniciar sesión</Button>
                                 </>
 
                         }

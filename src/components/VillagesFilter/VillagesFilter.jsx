@@ -40,7 +40,7 @@ const VillagesFilter = () => {
     return (
         <div className='villagesFilter'>
 
-            <input type='text' placeholder='busca un pueblo' onChange={handleVillagesByNameFilter} />
+            <input className="searchInput" type='text' placeholder='Busca un pueblo' onChange={handleVillagesByNameFilter} />
 
             {
                 filteredVillagesByName.length !== 0 && (
@@ -55,7 +55,7 @@ const VillagesFilter = () => {
                     </div>)
             }
 
-            <input type='text' placeholder='busca por provincia' onChange={getProvinces} />
+            <input className="searchInput" type='text' placeholder='Busca por provincia' onChange={getProvinces} />
 
             {
                 provinces.length !== 0 && (
@@ -71,15 +71,15 @@ const VillagesFilter = () => {
             }
 
             <Link to={`/pueblos/resultados/pueblos-de-costa`}>
-                <Button>PUEBLOS DE PLAYA</Button>
+                <Button className='filterBtn'>Playa</Button>
             </Link>
 
             <Link to={`/pueblos/resultados/pueblos-de-sierra`}>
-                <Button>PUEBLOS DE MONTAÑA</Button>
+                <Button className='filterBtn'>Montaña</Button>
             </Link>
 
             <Link to={`/pueblos/resultados`}>
-                <Button>VER TODOS</Button>
+                <Button className='allBtn'>Todos</Button>
             </Link>
 
         </div>

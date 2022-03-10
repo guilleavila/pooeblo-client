@@ -1,0 +1,48 @@
+.navbar {
+    position: fixed;
+    width: 100%;
+    padding: 15px;
+    box-shadow: 0px 12px 29px -3px rgba(170, 170, 170, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(16px) brightness(105%);
+    border-radius: 20px;
+    z-index: 2;
+}
+
+.logo {
+    width: 130px;
+}
+
+.navBtn {
+    border-radius: 50px;
+    margin: 5px 10px;
+    border: 0px;
+    /* border-color: #000000; */
+    color: #000000;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.navBtn:hover{
+    color: white;
+    border-color: #f9a77a;
+    background-color: #f9a77a;
+    box-shadow: 0px 12px 29px -9px rgba(249, 167, 122, 0.5);
+}
+
+.navBtn:focus{
+    border: 0px;
+    outline: none !important;
+    box-shadow: none!important;
+    background-color: #f9a77a;
+}
+
+.modal-content{
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(16px) brightness(125%);
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.modal-backdrop{
+    background-color: rgba(34, 34, 34, 0.75);
+}

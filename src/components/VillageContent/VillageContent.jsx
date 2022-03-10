@@ -40,13 +40,24 @@ const VillageContent = () => {
     const getVillageDetails = () => {
 
         if (user.name) {
-            villagesService
-                .getOneVillage(user._id) // es necesario para este servicio pasar el id desde aquí, y no del payload
-                .then(({ data }) => {
-                    setVillageDetails(data)
-                    setIsLoaded(true)
-                })
-                .catch(err => console.log(err))
+            if (user._id !== village_id) {
+                villagesService
+                    .getOneVillage(village_id) // es necesario para este servicio pasar el id desde aquí, y no del payload
+                    .then(({ data }) => {
+                        setVillageDetails(data)
+                        setIsLoaded(true)
+                    })
+                    .catch(err => console.log(err))
+            } else {
+                villagesService
+                    .getOneVillage(user._id) // es necesario para este servicio pasar el id desde aquí, y no del payload
+                    .then(({ data }) => {
+                        setVillageDetails(data)
+                        setIsLoaded(true)
+                    })
+                    .catch(err => console.log(err))
+            }
+
         } else {
             villagesService
                 .getOneVillage(village_id) // es necesario para este servicio pasar el id desde aquí, y no del payload

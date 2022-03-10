@@ -1,3 +1,73 @@
+.filterBtn{
+    border-radius: 50px;
+    margin: 10px;
+    /* border-color: #000000; */
+    border: 0px;
+    color: #000000;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.filterBtn:hover{
+    color: white;
+    border-color: #98a08f;
+    background-color: #98a08f;
+    box-shadow: 0px 12px 29px -9px rgba(194, 212, 226, 0.9);
+
+}
+
+.allBtn{
+    border-radius: 50px;
+    margin: 10px;
+    /* border-color: #000000; */
+    border: 0px;
+    color: #000000;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.allBtn:hover{
+    color: white;
+    border-color: #f9a77a;
+    background-color: #f9a77a;
+    box-shadow: 0px 12px 29px -9px rgba(249, 167, 122, 0.5);
+}
+
+.villagesFilter {
+    padding: 10px;
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 12px 29px -9px rgba(119, 119, 119, 0.1);
+    backdrop-filter: blur(16px) brightness(115%);
+    border-radius: 50px;
+    transition: 0.3s;
+
+}
+.villagesFilter:hover{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.villagesFilter:hover input{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.searchInput {
+    padding: 10px 30px;
+    width: 250px;
+    margin: 10px;
+    border-radius: 30px;
+    border: 0px;
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.searchInput:focus {
+    outline: none;
+    border-radius: 30px;
+    border: 0px;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
 .villagesResult {
     margin-top: 5px;
     width: 300px;
