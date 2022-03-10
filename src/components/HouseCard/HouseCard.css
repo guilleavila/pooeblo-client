@@ -20,14 +20,6 @@
   width: 100%;
 }
 
-/* Make the image to responsive */
-/* .imagehouseCardImg {
-  display: block;
-  width: 100%;
-  height: auto;
-} */
-
-/* The overlay effect - lays on top of the container and over the image */
 .overlayImg {
   position: absolute;
   bottom: 10px;
@@ -40,7 +32,6 @@
   text-align: center;
 }
 
-/* When you mouse over the container, fade in the overlay title */
 .houseCard:hover .overlayImg {
   opacity: 1;
 }

@@ -1,7 +1,30 @@
-.houseImg{
+.houseImages{
     width: 100%;
-    height: 75%;
+    height: 50%;
+}
+
+.bigHouseImg{
+    width: 100%;
+    height: 720px;
     object-fit: cover;
+    border-radius: 15px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.smallHouseImg {
+    border-radius: 15px;
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.mTop{
+    margin-top: 10px;
+}
+
+.mBottom{
+    margin-bottom: 10px;
 }
 
 .hidden{

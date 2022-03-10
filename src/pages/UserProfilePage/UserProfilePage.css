@@ -56,3 +56,7 @@
 .name{
     font-size: 2rem;
 }
+
+.addBtn{
+    display: flex;
+}

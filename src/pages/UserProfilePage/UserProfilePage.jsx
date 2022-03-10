@@ -121,7 +121,9 @@ const UserProfilePage = () => {
             <h2 className="section-title">Tus casas</h2>
             <Row>
                 <ResultsHouses houses={myHouses} width={3} />
-                <Button className='myBtn newHouseBtn' onClick={handleNewHouseModal}>Añadir una casa</Button>
+                <Col sm={12} className="addBtn">
+                    <Button className='myBtn newHouseBtn' onClick={handleNewHouseModal}>Añadir una casa</Button>
+                </Col>
             </Row>
 
 

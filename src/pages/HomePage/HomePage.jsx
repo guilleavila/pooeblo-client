@@ -1,10 +1,31 @@
-import { Container, Button } from "react-bootstrap"
+import { Container, Button, Row } from "react-bootstrap"
 import VillagesFilter from "../../components/VillagesFilter/VillagesFilter"
 import bgImage from "../../public/consuegra.png"
+import VillageCard from "../../components/VillageCard/VillageCard"
 import './HomePage.css'
+import { useEffect, useState } from "react"
+import villagesService from "../../services/villages.service"
+import MyFollowedVillages from "../../components/MyFollowedVillages/MyFollowedVillages"
 
 
 const HomePage = () => {
+
+    const [villages, setVillages] = useState([])
+
+    useEffect(() => {
+        getVillages()
+    }, [])
+
+    const getVillages = () => {
+        villagesService
+            .getAllVillages()
+            .then(({ data }) => {
+                setVillages(data.splice(0, 3))
+            })
+            .catch(err => console.log(err))
+    }
+
+    console.log(villages)
 
     return (
         <section>
@@ -26,7 +47,18 @@ const HomePage = () => {
                         {/* onClick={openSignUpModal} */}
                     </Container>
                 </section>
-            </Container>
+                <section className="secondSection">
+                    <Container className="secondSectionFlex">
+                        <h2 className="h2Weight">Descubre pueblos</h2>
+                        <h3 className="h3Weight">con todo lo que necesitas</h3>
+                        <div class="villagesSubSection">
+                            <Row>
+                                <MyFollowedVillages followedVillages={villages} size={4} />
+                            </Row>
+                        </div>
+                    </Container>
+                </section>
+            </Container >
 
         </section >
     )

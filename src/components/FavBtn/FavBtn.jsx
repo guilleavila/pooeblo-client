@@ -4,7 +4,7 @@ import './FavBtn.css'
 const FavBtn = ({ btnState, handleFavBtn }) => {
 
     return (
-        <Button className='favBtn' variant="dark" onClick={handleFavBtn}>{btnState}</Button>
+        <Button className='myBtn' variant="dark" onClick={handleFavBtn}>{btnState}</Button>
     )
 }
 

@@ -7,3 +7,18 @@
 .hidden{
     display: none;
 }
+
+.topRow{
+    position: relative;
+    top:120px;
+}
+
+.secondRow{
+    margin-top: 150px;
+}
+
+.h1house{
+  font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 10px;
+}

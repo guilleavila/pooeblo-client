@@ -49,7 +49,7 @@ const HouseImages = ({ _id, isMine, updataeImagesState, houseImages, getHouseDet
     return (
 
 
-        <Container>
+        <Container className="houseImages">
 
             {
                 (houseImages.length === 0) &&
@@ -142,28 +142,28 @@ const HouseImages = ({ _id, isMine, updataeImagesState, houseImages, getHouseDet
                 <Row>
                     <Col sm={6}>
                         <Button className={showBtn} onClick={() => handleDeleteBtn(houseImages[0])}>Eliminar</Button>
-                        <img className="houseImg" src={houseImages[0]} alt="default" />
+                        <img className="bigHouseImg" src={houseImages[0]} alt="default" />
                     </Col>
 
                     <Col sm={6}>
                         <Row>
                             <Col sm={6}>
                                 <Button className={showBtn} onClick={() => handleDeleteBtn(houseImages[1])}>Eliminar</Button>
-                                <img className="houseImg" src={houseImages[1]} alt="default" />
+                                <img className="smallHouseImg mBottom" src={houseImages[1]} alt="default" />
                             </Col>
                             <Col sm={6}>
                                 <Button className={showBtn} onClick={() => handleDeleteBtn(houseImages[2])}>Eliminar</Button>
-                                <img className="houseImg" src={houseImages[2]} alt="default" />
+                                <img className="smallHouseImg mBottom" src={houseImages[2]} alt="default" />
                             </Col>
                         </Row>
                         <Row>
                             <Col sm={6}>
                                 <Button className={showBtn} onClick={() => handleDeleteBtn(houseImages[3])}>Eliminar</Button>
-                                <img className="houseImg" src={houseImages[3]} alt="default" />
+                                <img className="smallHouseImg mTop" src={houseImages[3]} alt="default" />
                             </Col>
                             <Col sm={6}>
                                 <Button className={showBtn} onClick={() => handleDeleteBtn(houseImages[4])}>Eliminar</Button>
-                                <img className="houseImg" src={houseImages[4]} alt="default" />
+                                <img className="smallHouseImg mTop" src={houseImages[4]} alt="default" />
                             </Col>
                         </Row>
                     </Col>

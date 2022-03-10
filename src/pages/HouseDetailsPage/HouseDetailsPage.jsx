@@ -171,30 +171,34 @@ const HouseDetailsPage = () => {
 
     return (
         <Container>
-            <Row>
+            <Row className="topRow">
                 <Col sm={9}>
-                    <h1>{houseDetails?.name} </h1>
-                    <h3>{houseDetails?.village?.name} - {houseDetails?.village?.province}, {houseDetails?.village?.CCAA}</h3>
+                    <h1 className="h1house">{houseDetails?.name} </h1>
+                    <h3 className="h3Weight">{houseDetails?.village?.name} - {houseDetails?.village?.province}, {houseDetails?.village?.CCAA}</h3>
                     <p>{houseDetails?.street}</p>
-                    {isSuscriber ? (bookingsLoaded && <Bookings houseId={house_id} bookings={bookings} />) : <NewSubscriptionForm {...houseDetails} />}
-                    {isMine && <AllRentersBookingsInThisHouse houseId={house_id} moment={moment} />}
                 </Col>
                 <Col sm={3}>
                     <FavBtn btnState={btnState} handleFavBtn={handleFavBtn} />
                 </Col>
             </Row>
+
+            <Row className="secondRow">
+                {isLoaded && <HouseImages houseImages={houseImages} {...houseDetails} isMine={isMine} updataeImagesState={updataeImagesState} getHouseDetails={getHouseDetails}></HouseImages>}
+            </Row>
+
+            <Row>
+                {isLoaded && <HouseInfo {...houseDetails}></HouseInfo>}
+                {isSuscriber ? (bookingsLoaded && <Bookings houseId={house_id} bookings={bookings} />) : <NewSubscriptionForm {...houseDetails} />}
+                {isMine && <AllRentersBookingsInThisHouse houseId={house_id} moment={moment} />}
+            </Row>
+
             <Row>
                 {isMine &&
                     <>
                         <Button onClick={handleEditBtn}>Editar información</Button>
                     </>}
             </Row>
-            <Row>
-                {isLoaded && <HouseImages houseImages={houseImages} {...houseDetails} isMine={isMine} updataeImagesState={updataeImagesState} getHouseDetails={getHouseDetails}></HouseImages>}
-            </Row>
-            <Row>
-                {isLoaded && <HouseInfo {...houseDetails}></HouseInfo>}
-            </Row>
+
             <Modal show={showModal} onHide={handleSaveBtn} size="lg">
                 <Modal.Header closeButton>
                     <Modal.Title>Edita la información de la casa</Modal.Title>
