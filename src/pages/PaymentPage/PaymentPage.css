@@ -1,0 +1,29 @@
+img {
+    width: 50%;
+    border-radius: 25px;
+    object-fit: cover;
+}
+
+.imgContainer {
+    height: 200px;
+    /* object-fit: cover; */
+    border-radius: 25px;
+}
+
+.flexContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.paymentDetails {
+    width: 640px;
+}
+
+.paymentRow {
+    display: flex;
+    justify-content: space-between;
+}
+
+.payment {
+    margin-left: 550px;
+}
