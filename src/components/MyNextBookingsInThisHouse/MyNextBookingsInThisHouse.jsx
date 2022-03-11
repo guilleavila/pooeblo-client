@@ -43,7 +43,7 @@ const MyNextBookingsInThisHouse = ({ houseId, moment }) => {
 
     return (
         <Row>
-            <h5 className="h5Bookings">Mis próximas reservas en {houseDetails?.name}</h5>
+            {upcomingBookings?.length !== 0 && <h5 className="h5Bookings">Mis próximas reservas en {houseDetails?.name}</h5>}
             {
                 upcomingBookings.map(booking => {
                     return (

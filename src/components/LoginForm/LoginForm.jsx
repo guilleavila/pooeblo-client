@@ -37,6 +37,7 @@ const LoginForm = ({ closeModal }) => {
                 authenticateUser()
                 setShowMessage(true)
                 setMessageInfo({ title: 'Éxito', desc: 'Sesión iniciada correctamente' })
+                navigate('/perfil')
                 closeModal()
             })
             .catch(err => console.log(err))

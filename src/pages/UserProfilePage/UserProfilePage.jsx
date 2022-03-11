@@ -12,6 +12,7 @@ import UserImageForm from "../../components/UserImageForm/UserImageForm"
 import UserEditForm from "../../components/UserEditForm/UserEditForm"
 import './UserProfilePage.css'
 import NewHouseForm from "../../components/NewHouseForm/NewHouseForm"
+import housesService from "../../services/houses.service"
 
 const UserProfilePage = () => {
 
@@ -48,6 +49,8 @@ const UserProfilePage = () => {
             })
             .catch(err => console.log(err))
     }
+
+
 
     const getSubscriptions = () => {
         subscriptionsService
@@ -110,7 +113,7 @@ const UserProfilePage = () => {
 
             <h2 className="section-title">Pueblos a los que sigues</h2>
             <Row>
-                {isLoaded && < MyFollowedVillages followedVillages={userDetails.followedVillages} />}
+                {isLoaded && < MyFollowedVillages followedVillages={userDetails.followedVillages} size={4} />}
             </Row>
 
             <h2 className="section-title">Tus casas favoritas</h2>

@@ -68,3 +68,7 @@
 .addBtn{
     display: flex;
 }
+
+.followBtn {
+    width: 200px;
+}
