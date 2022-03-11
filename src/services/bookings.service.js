@@ -33,8 +33,8 @@ class BookingsService {
         return this.api.delete(`/${id}/delete`)
     }
 
-    getAllMyBookings = () => {
-        return this.api.get(`/get-all-my-bookings`)
+    getAllMyBookings = (user_id) => {
+        return this.api.get(`/get-all-my-bookings/${user_id}`)
     }
 
 }

@@ -13,6 +13,7 @@ import UserEditForm from "../../components/UserEditForm/UserEditForm"
 import './UserProfilePage.css'
 import NewHouseForm from "../../components/NewHouseForm/NewHouseForm"
 import housesService from "../../services/houses.service"
+import MyNextBookings from "../../components/MyNextBookings/MyNextBookings"
 
 const UserProfilePage = () => {
 
@@ -109,6 +110,11 @@ const UserProfilePage = () => {
             <h2 className="section-title">Tus suscripciones</h2>
             <Row>
                 < ResultsHouses houses={subscriptions} width={4} />
+            </Row>
+
+            <h2 className="section-title">Tus próximas reservas</h2>
+            <Row>
+                <MyNextBookings></MyNextBookings>
             </Row>
 
             <h2 className="section-title">Pueblos a los que sigues</h2>
