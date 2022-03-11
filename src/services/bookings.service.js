@@ -33,6 +33,10 @@ class BookingsService {
         return this.api.delete(`/${id}/delete`)
     }
 
+    getAllMyBookings = () => {
+        return this.api.get(`/get-all-my-bookings`)
+    }
+
 }
 
 const bookingsService = new BookingsService()
