@@ -83,9 +83,10 @@ const Bookings = ({ houseId, bookings, refreshBookings, refreshDetails }) => {
         bookingsService
             .createBooking(bookingState)
             .then(() => {
-                getSubscriptions()
-                refreshBookings()
-                refreshDetails()
+                // getSubscriptions()
+                // refreshBookings()
+                // refreshDetails()
+                navigate(`/perfil`)
             })
             .catch(err => console.log(err))
     }

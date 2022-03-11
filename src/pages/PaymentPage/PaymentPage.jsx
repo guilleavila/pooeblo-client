@@ -5,6 +5,7 @@ import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import subscriptionsService from '../../services/subscriptions.service'
+import './PaymentPage.css'
 
 const stripePromise = loadStripe("pk_test_51Ka6JvDSLsQDSpOUaMvFYazu9lmSEahwZu1XT7BEk8ajEszyhbFWrDRFgz4XnA74EgvGEh4nPLYlK1F60HxwpauX00N7zQGg8f")
 
@@ -54,39 +55,38 @@ const PaymentPage = () => {
 
 
     return (
-        <section className='hero'>
+        <section className='hero payment'>
             <Elements stripe={stripePromise}>
                 <Container>
-                    <Row>
-                        <Col sm={4}>
-                            <h5>Pagar</h5>
+                    <Row className="paymentRow">
+                        <Col sm={6}>
+                            <div className="paymentDetails">
+                                <div className='imgContainer flexContainer'>
+                                    <img src={subscription?.house.images[0]} />
+                                    <p>{subscription?.house.name}</p>
+                                </div>
+                                <hr></hr>
+                                <h3>Detalles del precio</h3>
+                                <div className="flexContainer">
+                                    <p>{subscription?.house.priceDay} € x {subscription?.totalDays} días</p>
+                                    <p>{subscription?.totalPrice} €</p>
+                                </div>
+                                <div className="flexContainer">
+                                    <p>Gastos de servicio</p>
+                                    <p>156€</p>
+                                </div>
+                                <div className="flexContainer">
+                                    <p><strong>Total (EUR)</strong></p>
+                                    <h6><strong>{subscription?.totalPrice + 156} €</strong></h6>
+                                </div>
+
+                            </div>
                             <h6>Tarjeta de crédito o débito</h6>
                             <hr></hr>
                             <CheckoutForm />
                             <Link to={`/perfil`}>
-                                <Button className='myBtn'>Finalizar Pago</Button>
+                                <Button className='myBtn paymentBtn'>Finalizar Pago</Button>
                             </Link>
-                        </Col>
-                        <Col>
-                            <div className>
-                                <img src={subscription?.house.images[0]} />
-                                <p>{subscription?.house.name}</p>
-                                <hr></hr>
-                                <h3>Detalles del precio</h3>
-                                <div>
-                                    <p>{subscription?.house.priceDay} € x {subscription?.totalDays} días</p>
-                                    <p>{subscription?.totalPrice} €</p>
-                                </div>
-                                <div>
-                                    <p>Gastos de servicio</p>
-                                    <p>156€</p>
-                                </div>
-                                <div>
-                                    <p>Total (EUR)</p>
-                                    <p>{subscription?.totalPrice + 156} €</p>
-                                </div>
-
-                            </div>
                         </Col>
                     </Row>
                 </Container>
