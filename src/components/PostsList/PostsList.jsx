@@ -8,7 +8,7 @@ const PostsList = ({ posts }) => {
             <Row>
                 {
                     posts?.map(post => {
-                        return <Col md={4} key={post._id} > <PostCard {...post} /> </Col>
+                        return <Col md={4} key={post._id} > <p>me pinto</p><PostCard {...post} /> </Col>
                     })
                 }
             </Row>

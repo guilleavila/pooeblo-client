@@ -30,6 +30,7 @@ const VillageContent = () => {
     const [housesLoaded, setHousesLoaded] = useState(false)
 
     const [posts, setPosts] = useState([])
+    const [postsLoaded, setPostsLoaded] = useState(false)
 
     const [showModal, setShowModal] = useState(false)
     const [showImageModal, setShowImageModal] = useState(false)
@@ -137,6 +138,8 @@ const VillageContent = () => {
                 .catch(err => console.log(err))
         }
     }
+
+    console.log('soy los posts -----', posts)
 
     const checkifMine = () => {
         !village_id && setIsMine(true)
@@ -256,7 +259,7 @@ const VillageContent = () => {
                 </Col>
             </Row>
 
-            <Row>
+            {/* <Row>
                 <Col>
                     <h2 className="section-title">Posts</h2>
                     <PostsList posts={posts} />
@@ -267,7 +270,7 @@ const VillageContent = () => {
                 <Col className='allHousesBtn'>
                     <Button onClick={handleNewPostBtn} className="myBtn newHouseBtn">Crear post</Button>
                 </Col>
-            </Row>
+            </Row> */}
 
 
             <Modal show={showModal} onHide={handleSaveBtn} size="lg">

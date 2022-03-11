@@ -110,7 +110,7 @@ const VillageDetailsPage = () => {
             <Container>
                 <VillageContent></VillageContent>
 
-                {
+                {/* {
                     isLoaded2 && isLoaded && <GoogleMap
                         mapContainerStyle={containerStyle}
                         center={{
@@ -127,7 +127,7 @@ const VillageDetailsPage = () => {
                         // icon={''}
                         />
                     </GoogleMap>
-                }
+                } */}
 
 
 
