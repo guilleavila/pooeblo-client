@@ -4,6 +4,7 @@ import authService from '../../services/auth.service'
 import { useNavigate } from 'react-router-dom'
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
 import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
+import './VillageSignupForm.css'
 
 const VillageSignupForm = ({ updateState, getId }) => {
 
@@ -69,7 +70,7 @@ const VillageSignupForm = ({ updateState, getId }) => {
     return (
         <>
 
-            <h1>Regístrate</h1>
+            <h1 className='h1signUp'>Regístrate</h1>
             <Form onSubmit={handleSubmit}>
 
 
@@ -120,8 +121,9 @@ const VillageSignupForm = ({ updateState, getId }) => {
                     <Form.Control type="hidden" name="province" value={prov} onChange={handleInputChange} />
                 </Form.Group>
 
-                <Button variant="dark" type="submit" style={{ width: '100%' }}>Siguiente</Button>
-
+                <div className="loginBtnDiv">
+                    <Button className='myBtn loginBtn' type="submit">Siguiente</Button>
+                </div>
             </Form>
         </>
 

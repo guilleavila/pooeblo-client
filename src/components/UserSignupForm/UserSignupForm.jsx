@@ -70,8 +70,9 @@ const UserSignupForm = ({ closeModal }) => {
                 <Form.Control type="date" name="birthDate" value={signupForm.birthDate} onChange={handleInputChange} />
             </Form.Group>
 
-            <Button variant="dark" type="submit" style={{ width: '100%' }}>Registrar</Button>
-
+            <div className="loginBtnDiv">
+                <Button className='myBtn loginBtn' type="submit" style={{ width: '100%' }}>Registrar</Button>
+            </div>
         </Form>
 
     )

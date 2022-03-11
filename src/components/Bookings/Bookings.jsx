@@ -33,7 +33,6 @@ const Bookings = ({ houseId, bookings, refreshBookings, refreshDetails }) => {
 
     useEffect(() => {
         getSubscriptions()
-
     }, [user])
 
     const getSubscriptions = () => {

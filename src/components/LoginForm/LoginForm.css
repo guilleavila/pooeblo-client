@@ -1,0 +1,8 @@
+.loginBtn{
+    width: 150px !important;
+}
+
+.loginBtnDiv{
+    display: flex !important;
+    justify-content: center !important;
+}

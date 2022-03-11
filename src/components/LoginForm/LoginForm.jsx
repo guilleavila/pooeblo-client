@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import authService from "../../services/auth.service"
 import { AuthContext } from "../../context/auth.context"
 import { MessageContext } from "../../context/userMessage.context"
+import './LoginForm.css'
 
 const LoginForm = ({ closeModal }) => {
 
@@ -55,8 +56,9 @@ const LoginForm = ({ closeModal }) => {
                 <Form.Label>Contraseña</Form.Label>
                 <Form.Control type="password" name="password" value={loginForm.password} onChange={handleInputChange} />
             </Form.Group>
-
-            <Button variant="dark" type="submit" style={{ width: '100%' }}>Iniciar sesión</Button>
+            <div className="loginBtnDiv">
+                <Button className='myBtn loginBtn' variant="dark" type="submit" style={{ width: '100%' }}>Iniciar sesión</Button>
+            </div>
 
         </Form>
     )

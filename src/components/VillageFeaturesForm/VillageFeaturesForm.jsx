@@ -1,6 +1,6 @@
 import { useState } from "react"
 import villagesService from "../../services/villages.service"
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useNavigate, useParams } from "react-router-dom"
 
 
@@ -64,32 +64,43 @@ const VillageFeaturesForm = ({ _id, features, closeModal, refreshDetails }) => {
                 <Form.Control type="number" name="averagePurchasePrice" value={featuresForm.averagePurchasePrice} onChange={handleInputChange} />
             </Form.Group>
 
-            <Form.Group className="mb-3">
-                <Form.Label>Servicios sanitarios</Form.Label>
-                <Form.Check type="checkbox" name="healthService" checked={featuresForm.healthService} onChange={handleCheckedChange} />
-            </Form.Group>
+            <Row>
+                <Col sm={6}>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Servicios sanitarios</Form.Label>
+                        <Form.Check type="checkbox" name="healthService" checked={featuresForm.healthService} onChange={handleCheckedChange} />
+                    </Form.Group>
+                </Col>
 
-            <Form.Group className="mb-3">
-                <Form.Label>Instalaciones deportivas</Form.Label>
-                <Form.Check type="checkbox" name="sportsFacilities" checked={featuresForm.sportsFacilities} onChange={handleCheckedChange} />
-            </Form.Group>
+                <Col sm={6}>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Instalaciones deportivas</Form.Label>
+                        <Form.Check type="checkbox" name="sportsFacilities" checked={featuresForm.sportsFacilities} onChange={handleCheckedChange} />
+                    </Form.Group>
+                </Col>
 
-            <Form.Group className="mb-3">
-                <Form.Label>Playa</Form.Label>
-                <Form.Check type="checkbox" name="isCoastalVillage" checked={featuresForm.isCoastalVillage} onChange={handleCheckedChange} />
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-                <Form.Label>Montaña</Form.Label>
-                <Form.Check type="checkbox" name="isMountainVillage" checked={featuresForm.isMountainVillage} onChange={handleCheckedChange} />
-            </Form.Group>
+                <Col sm={6}>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Playa</Form.Label>
+                        <Form.Check type="checkbox" name="isCoastalVillage" checked={featuresForm.isCoastalVillage} onChange={handleCheckedChange} />
+                    </Form.Group>
+                </Col>
+                <Col sm={6}>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Montaña</Form.Label>
+                        <Form.Check type="checkbox" name="isMountainVillage" checked={featuresForm.isMountainVillage} onChange={handleCheckedChange} />
+                    </Form.Group>
+                </Col>
+            </Row>
 
             <Form.Group className="mb-3">
                 <Form.Label>Otros servicios</Form.Label>
                 <Form.Control type="text-area" name="otherServices" value={featuresForm.otherServices} onChange={handleInputChange} />
             </Form.Group>
 
-            <Button variant="dark" type="submit" style={{ width: '100%' }}>Guardar</Button>
+            <div className="loginBtnDiv">
+                <Button className='myBtn loginBtn' type="submit" style={{ width: '100%' }}>Guardar</Button>
+            </div>
 
         </Form>
     )

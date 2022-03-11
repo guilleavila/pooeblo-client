@@ -58,7 +58,10 @@ const Navigation = () => {
                                         <Modal.Body scrollable='true'>
                                             {signUpForm === 'usuario' && <UserSignupPage closeModal={handleSignUpModal}></UserSignupPage>}
                                             {signUpForm === 'pueblo' && <VillageSignupPage closeModal={handleSignUpModal}></VillageSignupPage>}
-                                            <p>¿Eres un {signUpForm}? <Button onClick={changeSignUpForm}>Regístrate aquí</Button></p>
+                                            <div className='loginBtnDiv'>
+                                                {signUpForm === 'usuario' && <p>¿Eres un pueblo? <Button className='hereBtn' onClick={changeSignUpForm}>Regístrate aquí</Button></p>}
+                                                {signUpForm === 'pueblo' && <p>¿Eres un usuario? <Button className='hereBtn' onClick={changeSignUpForm}>Regístrate aquí</Button></p>}
+                                            </div>
                                         </Modal.Body>
                                     </Modal>
 

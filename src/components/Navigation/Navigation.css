@@ -46,3 +46,21 @@
 .modal-backdrop{
     background-color: rgba(34, 34, 34, 0.75);
 }
+
+.hereBtn{
+    color: white;
+    text-decoration: underline;
+    background-color: rgba(0,0,0,0);
+    border: 0px;
+}
+
+.hereBtn:hover{
+    background-color: rgba(0,0,0,0);
+    border: 0px;
+}
+
+.hereBtn:focus{
+    background-color: rgba(0,0,0,0);
+    border: 0px;
+    box-shadow: none;
+}

@@ -13,7 +13,7 @@ const PrivateRoute = () => {
     }
 
     if (!isLoggedIn) {
-        return <Navigate to='/iniciar-sesion' />
+        return <Navigate to='/' />
     }
 
     return <Outlet />

@@ -8,7 +8,7 @@ const UserSignupPage = ({closeModal}) => {
         <Container>
             <Row className="justify-content-md-center">
                 <Col md={8}>
-                    <h1>Regístrate</h1>
+                    <h1 className='h1login'>Regístrate</h1>
                     <UserSignupForm closeModal={closeModal}/>
                 </Col>
             </Row>
