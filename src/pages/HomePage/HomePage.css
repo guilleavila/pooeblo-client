@@ -65,10 +65,10 @@
 }
 
 .big-btn:focus{
-  border: 0px;
+  border: 2px solid rgb(249, 167, 122);
   outline: none !important;
   box-shadow: none!important;
-  background-color: #98a08f;
+  background-color: rgba(249, 167, 122, 1);
 }
 
 .secondSection{
@@ -78,7 +78,6 @@
   border-radius: 25px;
   margin-bottom: 100px;
   box-shadow: 0px 12px 29px -3px rgba(0, 0, 0, 0.15);
-
 }
 
 .secondSectionFlex{

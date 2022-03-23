@@ -121,7 +121,7 @@ const VillageSignupForm = ({ updateState, getId }) => {
                     <Form.Control type="hidden" name="province" value={prov} onChange={handleInputChange} />
                 </Form.Group>
 
-                <div className="loginBtnDiv">
+                <div className="modalBtnDiv">
                     <Button className='myBtn loginBtn' type="submit">Siguiente</Button>
                 </div>
             </Form>

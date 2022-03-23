@@ -35,7 +35,7 @@ const VillagesAllResultsListPage = () => {
 
             <Container>
                 <VillagesFilter />
-                <Row className="">
+                <Row className="resultsRow">
                     <h1 className="h1house">Resultados para: Todos los pueblos</h1>
                     <Col sm={6}>
                         <div className='villagesScroll'>

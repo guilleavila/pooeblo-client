@@ -10,7 +10,7 @@ const VillageCard = ({ name, province, CCAA, profileImg, _id }) => {
                 <Card.Img className="villageCardImg" variant="top" src={profileImg} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
-                    <Card.Text>{CCAA} {province}</Card.Text>
+                    <Card.Text>{province} - <span className='gray'>{CCAA}</span></Card.Text>
                 </Card.Body>
             </Link>
         </Card>

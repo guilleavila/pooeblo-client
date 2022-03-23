@@ -57,7 +57,7 @@ const LoginForm = ({ closeModal }) => {
                 <Form.Label>Contraseña</Form.Label>
                 <Form.Control type="password" name="password" value={loginForm.password} onChange={handleInputChange} />
             </Form.Group>
-            <div className="loginBtnDiv">
+            <div className="modalBtnDiv">
                 <Button className='myBtn loginBtn' variant="dark" type="submit" style={{ width: '100%' }}>Iniciar sesión</Button>
             </div>
 

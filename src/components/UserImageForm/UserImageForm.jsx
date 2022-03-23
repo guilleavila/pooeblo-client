@@ -51,7 +51,10 @@ const UserImageForm = ({ closeModal, refreshDetails }) => {
                 </Form.Text>
             </Form.Group>
 
-            <Button variant="dark" type="submit" disabled={loadingImage} style={{ width: '100%' }}>Subir imagen</Button>
+            <div className='modalBtnDiv'>
+                <Button variant="dark" type="submit" disabled={loadingImage} className='myBtn'>Subir imagen</Button>
+            </div>
+
 
         </Form>
     )

@@ -19,7 +19,7 @@ const HouseImages = ({ _id, isMine, updataeImagesState, houseImages, getHouseDet
     // EDIT IMAGES BTN
     const handleEditBtn = () => {
         btnText === 'Editar imágenes' ? setBtnText('Guardar') : setBtnText('Editar imágenes')
-        showBtn === 'hidden' ? setShowBtn('shown') : setShowBtn('hidden')
+        showBtn === 'hidden' ? setShowBtn('myBtn') : setShowBtn('hidden')
     }
 
     const handleDeleteBtn = (imgUrl) => {
@@ -103,8 +103,8 @@ const HouseImages = ({ _id, isMine, updataeImagesState, houseImages, getHouseDet
                         </Row>
                         <Row>
                             <Col sm={12}>
-                                <Button className={showBtn} onClick={() => handleDeleteBtn(houseImages[2])}>Eliminar</Button>
                                 <img className="smallHouseImg mTop" src={houseImages[2]} alt="house" />
+                                <Button className={showBtn} onClick={() => handleDeleteBtn(houseImages[2])}>Eliminar</Button>
                             </Col>
                         </Row>
                     </Col>
@@ -144,10 +144,8 @@ const HouseImages = ({ _id, isMine, updataeImagesState, houseImages, getHouseDet
                 (houseImages.length === 5) &&
                 <Row>
                     <Col sm={6}>
-                        <div className="imgContainer">
-                            <Button className='remove' className={showBtn} onClick={() => handleDeleteBtn(houseImages[0])}>Eliminar</Button>
-                            <img className="bigHouseImg" src={houseImages[0]} alt="house" />
-                        </div>
+                        <Button className={showBtn} onClick={() => handleDeleteBtn(houseImages[0])}>Eliminar</Button>
+                        <img className="bigHouseImg" src={houseImages[0]} alt="house" />
                     </Col>
 
                     <Col sm={6}>

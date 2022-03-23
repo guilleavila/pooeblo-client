@@ -2,6 +2,7 @@ import { useContext, useState } from "react"
 import { AuthContext } from "../../context/auth.context"
 import { Form, Button } from "react-bootstrap"
 import userService from "../../services/user.service"
+import './UserEditForm.css'
 
 
 const UserEditForm = ({ firstName, lastName, phoneNumber, birthDate, closeModal, refreshDetails }) => {
@@ -53,13 +54,15 @@ const UserEditForm = ({ firstName, lastName, phoneNumber, birthDate, closeModal,
                 <Form.Label>Nº de teléfono</Form.Label>
                 <Form.Control type="text" name="phoneNumber" value={infoForm.phoneNumber} onChange={handleInputChange} />
             </Form.Group>
-
+            {/* 
             <Form.Group className="mb-3">
                 <Form.Label>Fecha de nacimiento</Form.Label>
                 <Form.Control type="date" name="birthDate" value={infoForm.birthDate} onChange={handleInputChange} />
-            </Form.Group>
+            </Form.Group> */}
 
-            <Button variant="dark" type="submit" style={{ width: '100%' }}>Guardar cambios</Button>
+            <div className="modalBtnDiv">
+                <Button variant="dark" type="submit" className="myBtn">Guardar cambios</Button>
+            </div>
 
         </Form>
     )

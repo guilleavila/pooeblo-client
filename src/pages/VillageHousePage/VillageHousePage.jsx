@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import HouseResultsList from "../../components/HouseResultsList/HouseResultsList"
 import villagesService from "../../services/villages.service"
+import './VillageHousePage.css'
+import { Container, Row, Col } from "react-bootstrap"
 
 const VillageHousePage = () => {
 
@@ -25,13 +27,15 @@ const VillageHousePage = () => {
 
     return (
 
-        isLoaded && <section>
-
-            <h1>ECHA UN VISTAZO A TODAS LAS CASAS DE {villageHouses[0].village.name} </h1>
-
-            <HouseResultsList results={villageHouses} />
-
-        </section>
+        isLoaded &&
+        <Container>
+            <Row className='allHousesH1 resultsRow'>
+                <Col sm={12}>
+                    <h1 className="h1House">Casas en {villageHouses[0].village.name} </h1>
+                    <HouseResultsList results={villageHouses} />
+                </Col>
+            </Row>
+        </Container>
     )
 }
 

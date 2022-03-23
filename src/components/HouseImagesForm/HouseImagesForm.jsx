@@ -53,7 +53,9 @@ const HouseImagesForm = ({ closeModal, refreshDetails }) => {
                 <Form.Control type="file" onChange={uploadHouseImages} multiple />
             </Form.Group>
 
-            <Button variant="dark" type="submit" disabled={loadingImage} style={{ width: '100%' }}>Subir imágenes</Button>
+            <div className='modalBtnDiv'>
+                <Button variant="dark" type="submit" disabled={loadingImage} className='myBtn'>Subir imágenes</Button>
+            </div>
 
         </Form>
     )

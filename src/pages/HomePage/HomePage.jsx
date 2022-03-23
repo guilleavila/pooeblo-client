@@ -1,4 +1,4 @@
-import { Container, Button, Row } from "react-bootstrap"
+import { Container, Button, Row, Modal } from "react-bootstrap"
 import VillagesFilter from "../../components/VillagesFilter/VillagesFilter"
 import bgImage from "../../public/consuegra.png"
 import VillageCard from "../../components/VillageCard/VillageCard"
@@ -6,11 +6,16 @@ import './HomePage.css'
 import { useEffect, useState } from "react"
 import villagesService from "../../services/villages.service"
 import MyFollowedVillages from "../../components/MyFollowedVillages/MyFollowedVillages"
+import UserSignupPage from "../UserSignupPage/UserSignupPage"
+import VillageSignupPage from "../VillageSignupPage/VillageSignupPage"
 
 
 const HomePage = () => {
 
     const [villages, setVillages] = useState([])
+
+    const [showSignUpModal, setShowSignUpModal] = useState(false)
+    const [signUpForm, setSignUpForm] = useState('pueblo')
 
     useEffect(() => {
         getVillages()
@@ -25,7 +30,13 @@ const HomePage = () => {
             .catch(err => console.log(err))
     }
 
-    console.log(villages)
+    const openSignUpModal = () => setShowSignUpModal(true)
+    const handleSignUpModal = () => setShowSignUpModal(false)
+
+    const changeSignUpForm = () => {
+        signUpForm === 'usuario' && setSignUpForm('pueblo')
+        signUpForm === 'pueblo' && setSignUpForm('usuario')
+    }
 
     return (
         <section>
@@ -43,8 +54,19 @@ const HomePage = () => {
                         <h3 className="h3Weight">Regístrate ahora para darte a conocer y llena tu pueblo de vida.</h3>
 
 
-                        <Button className="big-btn" >Regístrate</Button>
-                        {/* onClick={openSignUpModal} */}
+                        <Button className="big-btn" onClick={openSignUpModal}>Regístrate</Button>
+
+                        <Modal className="my-modal" centered='true' show={showSignUpModal} onHide={handleSignUpModal} size="lg">
+                            <Modal.Body scrollable='true'>
+                                {signUpForm === 'usuario' && <UserSignupPage closeModal={handleSignUpModal}></UserSignupPage>}
+                                {signUpForm === 'pueblo' && <VillageSignupPage closeModal={handleSignUpModal}></VillageSignupPage>}
+                                <div className='modalBtnDiv'>
+                                    {signUpForm === 'usuario' && <p>¿Eres un pueblo? <Button className='hereBtn' onClick={changeSignUpForm}>Regístrate aquí</Button></p>}
+                                    {signUpForm === 'pueblo' && <p>¿Eres un usuario? <Button className='hereBtn' onClick={changeSignUpForm}>Regístrate aquí</Button></p>}
+                                </div>
+                            </Modal.Body>
+                        </Modal>
+
                     </Container>
                 </section>
                 <section className="secondSection">
