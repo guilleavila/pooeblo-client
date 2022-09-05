@@ -69,3 +69,5 @@ Guillermo Ávila Ayylón
 ## Additional Info
 
 This project was elected by our classmates to compete in Ironhack's Hackshow, and won it!
+![](https://media.giphy.com/media/w5GPJlLqBEQVC38y6C/giphy.gif)
+
