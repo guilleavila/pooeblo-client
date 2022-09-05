@@ -1,70 +1,71 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Pooeblo
 
-## Available Scripts
+![App Screenshot](https://user-images.githubusercontent.com/69345715/188492140-f6ad62f6-2afc-48dc-8fa8-8501f35b4b90.png)
 
-In the project directory, you can run:
+Pooeblo is our final project of the Ironhack web development bootcamp. 
+It is a SPA (Single Page Application) created with React, which consumes its data from a REST API (mongoDB) 
+through an express server.
 
-### `npm start`
+Our passion for villages and our desire to live in one of them led us to the idea 
+of this project. Pooeblo was born with the aim of bringing young people closer to villages, 
+without the need to invest in a property, and generating interest and benefit in villages 
+with few inhabitants.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The users of the application can be both individuals and villages, who use the platform 
+to make themselves known and attract new residents. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+People can search for villages, see their characteristics, and find out about available houses. 
+If they are interested in any of them, they can create a subscription to that house, 
+with a certain number of days to spend within a year. Reservations to the subscribed houses 
+are managed individually and independently from the creation of the subscription.
 
-### `npm test`
+Users can also publish their houses so that other users can subscribe and create bookings.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+![github-small](https://user-images.githubusercontent.com/69345715/188492432-605d75d8-58c4-402d-8698-2bd6c32919da.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Demo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[Try the app here!](https://pooeblo.netlify.app/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technologies
+MERN Stack: MongoDB, Express, React (w/ Hooks), Node
 
-### `npm run eject`
+Javascript (ES6), HTML5, CSS3
+## Client Usage
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+  npm i
+  npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Client .env variables
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+- REACT_APP_API_URL=http://localhost:5005/api
+- REACT_APP_API_KEY=API_KEY_GOES_HERE
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## SERVER
 
-### Code Splitting
+[Pooeblo-Server](https://github.com/guilleavila/pooeblo-server)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Authors
 
-### Analyzing the Bundle Size
+- Inés García Periáñez - [@inesgarper](https://www.github.com/octokatherine)
+- Guillermo Ávila Ayllón - [@guilleavila](https://www.github.com/octokatherine)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## 🔗 Links
+Inés García Periáñez
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/guillermo-%C3%A1vila/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Guillermo Ávila Ayylón 
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/inesgarper/)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Additional Info
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project was elected by our classmates to compete in Ironhack's Hackshow, and won it!
