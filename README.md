@@ -59,10 +59,10 @@ Javascript (ES6), HTML5, CSS3
 
 
 ## 🔗 Links
-Inés García Periáñez
+Guillermo Ávila Ayllón 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/guillermo-%C3%A1vila/)
 
-Guillermo Ávila Ayylón 
+Inés García Periáñez
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/inesgarper/)
 
 
