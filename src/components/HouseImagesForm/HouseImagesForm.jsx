@@ -6,11 +6,10 @@ import { useParams } from 'react-router-dom'
 
 const HouseImagesForm = ({ closeModal, refreshDetails }) => {
 
-
-    // form state
     const [houseImages, setHouseImages] = useState({
         images: []
     })
+    
     const [loadingImage, setLoadingImage] = useState(false)
 
     const { house_id } = useParams()
